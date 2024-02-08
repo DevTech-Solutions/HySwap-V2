@@ -10,56 +10,47 @@ type ChainTokenList = {
   readonly [chainId in ChainId]: Token[]
 }
 
-export const DAI = new Token(ChainId.MAINNET, '0x6B175474E89094C44Da98b954EedeAC495271d0F', 18, 'DAI', 'Dai Stablecoin')
-export const USDC = new Token(ChainId.MAINNET, '0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48', 6, 'USDC', 'USD//C')
-export const USDT = new Token(ChainId.MAINNET, '0xdAC17F958D2ee523a2206206994597C13D831ec7', 6, 'USDT', 'Tether USD')
-export const COMP = new Token(ChainId.MAINNET, '0xc00e94Cb662C3520282E6f5717214004A7f26888', 18, 'COMP', 'Compound')
-export const MKR = new Token(ChainId.MAINNET, '0x9f8F72aA9304c8B593d555F12eF6589cC3A579A2', 18, 'MKR', 'Maker')
-export const AMPL = new Token(ChainId.MAINNET, '0xD46bA6D942050d489DBd938a2C909A5d5039A161', 9, 'AMPL', 'Ampleforth')
+export const ARB = new Token(ChainId.ZKEVMPOLYGON, '0xbf838e93082cc05b61e89c6792f338ece8590d9c', 18, 'ARB', 'ARB')
+export const DAI = new Token(ChainId.ZKEVMPOLYGON, '0x67385c066c14e3f5fa5ca4c7755ae13883d09a18', 18, 'DAI', 'Dai Stablecoin')
+export const GRT = new Token(ChainId.ZKEVMPOLYGON, '0x7422ab95742858e21b9f6299ff66b24fb2a478fd', 18, 'GRT', 'GRT')
+export const LINK = new Token(ChainId.ZKEVMPOLYGON, '0xefb2408b7a3db3594a2ad179d2c08a6be1e1ae55', 18, 'LINK', 'LINK')
+export const MKR = new Token(ChainId.ZKEVMPOLYGON, '0x7bbfc2e6e6fcadcad676a1585b669bdc80d43aeb', 18, 'MKR', 'Maker')
+export const META = new Token(ChainId.ZKEVMPOLYGON, '0xe1986ced537437423837b4ef6210b51108ea76f1', 18, 'META', 'METALAMP')
+export const TRX = new Token(ChainId.ZKEVMPOLYGON, '0xb89bffe2370512b63f613ca3fd5d5ad70538ce93', 18, 'TRX', 'TRX')
+export const TUSD = new Token(ChainId.ZKEVMPOLYGON, '0x6cbec9d3123f9976f768634f4f87680524cc5101', 18, 'TUSD', 'TUSD')
+export const USDC = new Token(ChainId.ZKEVMPOLYGON, '0xa40eb0638fa439e672f266886d8cdc6ded67751f', 18, 'USDC', 'USD//C')
+export const USDT = new Token(ChainId.ZKEVMPOLYGON, '0xe751e20d336f7be90d14c84e987af4a712c48108', 18, 'USDT', 'Tether USD')
 
 const WETH_ONLY: ChainTokenList = {
-  [ChainId.MAINNET]: [WETH[ChainId.MAINNET]],
-  [ChainId.ROPSTEN]: [WETH[ChainId.ROPSTEN]],
-  [ChainId.RINKEBY]: [WETH[ChainId.RINKEBY]],
-  [ChainId.GÖRLI]: [WETH[ChainId.GÖRLI]],
-  [ChainId.KOVAN]: [WETH[ChainId.KOVAN]],
   [ChainId.ZKEVMPOLYGON]: [WETH[ChainId.ZKEVMPOLYGON]]
 }
 
 // used to construct intermediary pairs for trading
 export const BASES_TO_CHECK_TRADES_AGAINST: ChainTokenList = {
   ...WETH_ONLY,
-  [ChainId.MAINNET]: [...WETH_ONLY[ChainId.MAINNET], DAI, USDC, USDT, COMP, MKR]
+  [ChainId.ZKEVMPOLYGON]: [...WETH_ONLY[ChainId.ZKEVMPOLYGON], DAI, USDC, USDT, MKR]
 }
 
 /**
  * Some tokens can only be swapped via certain pairs, so we override the list of bases that are considered for these
  * tokens.
  */
-export const CUSTOM_BASES: { [chainId in ChainId]?: { [tokenAddress: string]: Token[] } } = {
-  [ChainId.MAINNET]: {
-    [AMPL.address]: [DAI, WETH[ChainId.MAINNET]]
-  }
-}
+export const CUSTOM_BASES: { [chainId in ChainId]?: { [tokenAddress: string]: Token[] } } = {}
 
 // used for display in the default list when adding liquidity
 export const SUGGESTED_BASES: ChainTokenList = {
   ...WETH_ONLY,
-  [ChainId.MAINNET]: [...WETH_ONLY[ChainId.MAINNET], DAI, USDC, USDT]
+  [ChainId.ZKEVMPOLYGON]: [...WETH_ONLY[ChainId.ZKEVMPOLYGON], DAI, USDC, USDT]
 }
 
 // used to construct the list of all pairs we consider by default in the frontend
 export const BASES_TO_TRACK_LIQUIDITY_FOR: ChainTokenList = {
   ...WETH_ONLY,
-  [ChainId.MAINNET]: [...WETH_ONLY[ChainId.MAINNET], DAI, USDC, USDT]
+  [ChainId.ZKEVMPOLYGON]: [...WETH_ONLY[ChainId.ZKEVMPOLYGON], DAI, USDC, USDT]
 }
 
 export const PINNED_PAIRS: { readonly [chainId in ChainId]?: [Token, Token][] } = {
-  [ChainId.MAINNET]: [
-    [
-      new Token(ChainId.MAINNET, '0x5d3a536E4D6DbD6114cc1Ead35777bAB948E3643', 8, 'cDAI', 'Compound Dai'),
-      new Token(ChainId.MAINNET, '0x39AA39c021dfbaE8faC545936693aC917d5E7563', 8, 'cUSDC', 'Compound USD Coin')
-    ],
+  [ChainId.ZKEVMPOLYGON]: [
     [USDC, USDT],
     [DAI, USDT]
   ]

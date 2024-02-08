@@ -1,5 +1,5 @@
 import { Contract } from '@ethersproject/contracts'
-import { ChainId, WETH } from '@uniswap/sdk'
+import { WETH } from '@uniswap/sdk'
 import { abi as IUniswapV2PairABI } from '@uniswap/v2-core/build/IUniswapV2Pair.json'
 import { useMemo } from 'react'
 import ENS_ABI from '../constants/abis/ens-registrar.json'
@@ -52,18 +52,7 @@ export function useWETHContract(withSignerIfPossible?: boolean): Contract | null
 }
 
 export function useENSRegistrarContract(withSignerIfPossible?: boolean): Contract | null {
-  const { chainId } = useActiveWeb3React()
   let address: string | undefined
-  if (chainId) {
-    switch (chainId) {
-      case ChainId.MAINNET:
-      case ChainId.GÖRLI:
-      case ChainId.ROPSTEN:
-      case ChainId.RINKEBY:
-        address = '0x00000000000C2E074eC69A0dFb2997BA6C7d2e1e'
-        break
-    }
-  }
   return useContract(address, ENS_ABI, withSignerIfPossible)
 }
 
@@ -85,9 +74,8 @@ export function useMulticallContract(): Contract | null {
 }
 
 export function useSocksController(): Contract | null {
-  const { chainId } = useActiveWeb3React()
   return useContract(
-    chainId === ChainId.MAINNET ? '0x65770b5283117639760beA3F867b69b3697a91dd' : undefined,
+    undefined,
     UNISOCKS_ABI,
     false
   )
