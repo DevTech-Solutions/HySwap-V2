@@ -12,13 +12,8 @@ import Transaction from './Transaction'
 import { SUPPORTED_WALLETS } from '../../constants'
 import { ReactComponent as Close } from '../../assets/images/x.svg'
 import { getEtherscanLink } from '../../utils'
-import { injected, walletconnect, walletlink, fortmatic, portis } from '../../connectors'
-import CoinbaseWalletIcon from '../../assets/images/coinbaseWalletIcon.svg'
-import WalletConnectIcon from '../../assets/images/walletConnectIcon.svg'
-import FortmaticIcon from '../../assets/images/fortmaticIcon.png'
-import PortisIcon from '../../assets/images/portisIcon.png'
+import { injected } from '../../connectors'
 import Identicon from '../Identicon'
-import { ButtonSecondary } from '../Button'
 import { ExternalLink as LinkIcon } from 'react-feather'
 import { ExternalLink, LinkStyledButton, TYPE } from '../../theme'
 
@@ -184,22 +179,6 @@ const TransactionListWrapper = styled.div`
   ${({ theme }) => theme.flexColumnNoWrap};
 `
 
-const WalletAction = styled(ButtonSecondary)`
-  width: fit-content;
-  font-weight: 400;
-  margin-left: 8px;
-  font-size: 0.825rem;
-  padding: 4px 6px;
-  :hover {
-    cursor: pointer;
-    text-decoration: underline;
-  }
-`
-
-const MainWalletAction = styled(WalletAction)`
-  color: ${({ theme }) => theme.primary1};
-`
-
 function renderTransactions(transactions: string[]) {
   return (
     <TransactionListWrapper>
@@ -215,15 +194,13 @@ interface AccountDetailsProps {
   pendingTransactions: string[]
   confirmedTransactions: string[]
   ENSName?: string
-  openOptions: () => void
 }
 
 export default function AccountDetails({
   toggleWalletModal,
   pendingTransactions,
   confirmedTransactions,
-  ENSName,
-  openOptions
+  ENSName
 }: AccountDetailsProps) {
   const { chainId, account, connector } = useActiveWeb3React()
   const theme = useContext(ThemeContext)
@@ -248,39 +225,6 @@ export default function AccountDetails({
           <Identicon />
         </IconWrapper>
       )
-    } else if (connector === walletconnect) {
-      return (
-        <IconWrapper size={16}>
-          <img src={WalletConnectIcon} alt={'wallet connect logo'} />
-        </IconWrapper>
-      )
-    } else if (connector === walletlink) {
-      return (
-        <IconWrapper size={16}>
-          <img src={CoinbaseWalletIcon} alt={'coinbase wallet logo'} />
-        </IconWrapper>
-      )
-    } else if (connector === fortmatic) {
-      return (
-        <IconWrapper size={16}>
-          <img src={FortmaticIcon} alt={'fortmatic logo'} />
-        </IconWrapper>
-      )
-    } else if (connector === portis) {
-      return (
-        <>
-          <IconWrapper size={16}>
-            <img src={PortisIcon} alt={'portis logo'} />
-            <MainWalletAction
-              onClick={() => {
-                portis.portis.showPortis()
-              }}
-            >
-              Show Portis
-            </MainWalletAction>
-          </IconWrapper>
-        </>
-      )
     }
     return null
   }
@@ -301,26 +245,6 @@ export default function AccountDetails({
             <InfoCard>
               <AccountGroupingRow>
                 {formatConnectorName()}
-                <div>
-                  {connector !== injected && connector !== walletlink && (
-                    <WalletAction
-                      style={{ fontSize: '.825rem', fontWeight: 400, marginRight: '8px' }}
-                      onClick={() => {
-                        ;(connector as any).close()
-                      }}
-                    >
-                      Disconnect
-                    </WalletAction>
-                  )}
-                  <WalletAction
-                    style={{ fontSize: '.825rem', fontWeight: 400 }}
-                    onClick={() => {
-                      openOptions()
-                    }}
-                  >
-                    Change
-                  </WalletAction>
-                </div>
               </AccountGroupingRow>
               <AccountGroupingRow id="web3-account-identifier-row">
                 <AccountControl>
