@@ -1,5 +1,4 @@
 import { createWeb3ReactRoot, Web3ReactProvider } from '@web3-react/core'
-import 'inter-ui'
 import React, { StrictMode } from 'react'
 import { isMobile } from 'react-device-detect'
 import ReactDOM from 'react-dom'
@@ -13,7 +12,7 @@ import ApplicationUpdater from './state/application/updater'
 import MulticallUpdater from './state/multicall/updater'
 import TransactionUpdater from './state/transactions/updater'
 import UserUpdater from './state/user/updater'
-import ThemeProvider, { FixedGlobalStyle, ThemedGlobalStyle } from './theme'
+import ThemeProvider, { FixedGlobalStyle, FontStyles, ThemedGlobalStyle } from './theme'
 import getLibrary from './utils/getLibrary'
 
 const Web3ProviderNetwork = createWeb3ReactRoot(NetworkContextName)
@@ -52,6 +51,7 @@ function Updaters() {
 
 ReactDOM.render(
   <StrictMode>
+    <FontStyles />
     <FixedGlobalStyle />
     <Web3ReactProvider getLibrary={getLibrary}>
       <Web3ProviderNetwork getLibrary={getLibrary}>
