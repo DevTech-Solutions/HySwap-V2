@@ -6,12 +6,13 @@ import styled, {
   css,
   DefaultTheme
 } from 'styled-components'
-import { useIsDarkMode } from '../state/user/hooks'
 import { Text, TextProps } from 'rebass'
+
+import { useIsDarkMode } from '../state/user/hooks'
 import { Colors } from './styled'
+import fonts from './fonts.module.css'
 
 export * from './components'
-export * from './FontStyles'
 
 const MEDIA_WIDTHS = {
   upToExtraSmall: 500,
@@ -166,6 +167,8 @@ export const TYPE = {
 }
 
 export const FixedGlobalStyle = createGlobalStyle`
+${fonts}
+
 html, input, textarea, button {
   font-family: 'Montserrat', sans-serif;
   letter-spacing: -0.018em;
