@@ -3,7 +3,7 @@ import { AddressZero } from '@ethersproject/constants'
 import { TokenAmount, Token, ChainId, Percent, JSBI } from '@uniswap/sdk'
 
 import {
-  getEtherscanLink,
+  getScanLink,
   calculateSlippageAmount,
   isAddress,
   shortenAddress,
@@ -14,28 +14,19 @@ import {
 describe('utils', () => {
   describe('#getEtherscanLink', () => {
     it('correct for tx', () => {
-      expect(getEtherscanLink(1, 'abc', 'transaction')).toEqual('https://etherscan.io/tx/abc')
+      expect(getScanLink(1442, 'abc', 'transaction')).toEqual('https://testnet-zkevm.polygonscan.com/tx/abc')
     })
     it('correct for token', () => {
-      expect(getEtherscanLink(1, 'abc', 'token')).toEqual('https://etherscan.io/token/abc')
+      expect(getScanLink(1442, 'abc', 'token')).toEqual('https://testnet-zkevm.polygonscan.com/token/abc')
     })
     it('correct for address', () => {
-      expect(getEtherscanLink(1, 'abc', 'address')).toEqual('https://etherscan.io/address/abc')
-    })
-    it('unrecognized chain id defaults to mainnet', () => {
-      expect(getEtherscanLink(2, 'abc', 'address')).toEqual('https://etherscan.io/address/abc')
-    })
-    it('ropsten', () => {
-      expect(getEtherscanLink(3, 'abc', 'address')).toEqual('https://ropsten.etherscan.io/address/abc')
-    })
-    it('enum', () => {
-      expect(getEtherscanLink(ChainId.RINKEBY, 'abc', 'address')).toEqual('https://rinkeby.etherscan.io/address/abc')
+      expect(getScanLink(1442, 'abc', 'address')).toEqual('https://testnet-zkevm.polygonscan.com/address/abc')
     })
   })
 
   describe('#calculateSlippageAmount', () => {
     it('bounds are correct', () => {
-      const tokenAmount = new TokenAmount(new Token(ChainId.MAINNET, AddressZero, 0), '100')
+      const tokenAmount = new TokenAmount(new Token(ChainId.ZKEVMPOLYGON, AddressZero, 0), '100')
       expect(() => calculateSlippageAmount(tokenAmount, -1)).toThrow()
       expect(calculateSlippageAmount(tokenAmount, 0).map(bound => bound.toString())).toEqual(['100', '100'])
       expect(calculateSlippageAmount(tokenAmount, 100).map(bound => bound.toString())).toEqual(['99', '101'])

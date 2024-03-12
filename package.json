@@ -1,6 +1,6 @@
 {
-  "name": "@uniswap/interface",
-  "description": "Uniswap Interface",
+  "name": "@lampswap/interface",
+  "description": "Lampswap Interface",
   "homepage": ".",
   "private": true,
   "devDependencies": {
