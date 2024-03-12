@@ -3,8 +3,6 @@ import { useMemo } from 'react'
 
 import { WETH } from '../sdk'
 import { abi as IUniswapV2PairABI } from '../constants/abis/IUniswapV2Pair.json'
-import ENS_ABI from '../constants/abis/ens-registrar.json'
-import ENS_PUBLIC_RESOLVER_ABI from '../constants/abis/ens-public-resolver.json'
 import { ERC20_BYTES32_ABI } from '../constants/abis/erc20'
 import ERC20_ABI from '../constants/abis/erc20.json'
 import UNISOCKS_ABI from '../constants/abis/unisocks.json'
@@ -35,15 +33,6 @@ export function useTokenContract(tokenAddress?: string, withSignerIfPossible?: b
 export function useWETHContract(withSignerIfPossible?: boolean): Contract | null {
   const { chainId } = useActiveWeb3React()
   return useContract(chainId ? WETH[chainId].address : undefined, WETH_ABI, withSignerIfPossible)
-}
-
-export function useENSRegistrarContract(withSignerIfPossible?: boolean): Contract | null {
-  let address: string | undefined
-  return useContract(address, ENS_ABI, withSignerIfPossible)
-}
-
-export function useENSResolverContract(address: string | undefined, withSignerIfPossible?: boolean): Contract | null {
-  return useContract(address, ENS_PUBLIC_RESOLVER_ABI, withSignerIfPossible)
 }
 
 export function useBytes32TokenContract(tokenAddress?: string, withSignerIfPossible?: boolean): Contract | null {

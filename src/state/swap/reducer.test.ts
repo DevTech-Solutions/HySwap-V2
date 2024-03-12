@@ -10,8 +10,7 @@ describe('swap reducer', () => {
       [Field.OUTPUT]: { currencyId: '' },
       [Field.INPUT]: { currencyId: '' },
       typedValue: '',
-      independentField: Field.INPUT,
-      recipient: null
+      independentField: Field.INPUT
     })
   })
 
@@ -28,8 +27,7 @@ describe('swap reducer', () => {
         [Field.OUTPUT]: { currencyId: '0x0000' },
         [Field.INPUT]: { currencyId: '' },
         typedValue: '',
-        independentField: Field.INPUT,
-        recipient: null
+        independentField: Field.INPUT
       })
     })
   })
