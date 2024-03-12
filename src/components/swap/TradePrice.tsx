@@ -1,9 +1,10 @@
 import React from 'react'
-import { Price } from '@uniswap/sdk'
 import { useContext } from 'react'
 import { Repeat } from 'react-feather'
 import { Text } from 'rebass'
 import { ThemeContext } from 'styled-components'
+
+import { Price } from '../../sdk'
 import { StyledBalanceMaxMini } from './styleds'
 
 interface TradePriceProps {

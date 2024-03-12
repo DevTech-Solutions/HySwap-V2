@@ -1,5 +1,6 @@
-import { Currency, CurrencyAmount, ETHER, JSBI, Token, TokenAmount } from '@uniswap/sdk'
 import { useMemo } from 'react'
+
+import { Currency, CurrencyAmount, ETHER, JSBI, Token, TokenAmount } from '../../sdk'
 import ERC20_INTERFACE from '../../constants/abis/erc20'
 import { useAllTokens } from '../../hooks/Tokens'
 import { useActiveWeb3React } from '../../hooks'

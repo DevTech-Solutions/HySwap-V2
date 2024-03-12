@@ -1,6 +1,7 @@
-import { ChainId } from '@uniswap/sdk'
 import React, { useContext } from 'react'
 import styled, { ThemeContext } from 'styled-components'
+
+import { ChainId } from '../../sdk'
 import Modal from '../Modal'
 import { ExternalLink } from '../../theme'
 import { Text } from 'rebass'

@@ -1,8 +1,9 @@
-import { Currency, CurrencyAmount, currencyEquals, ETHER, Token } from '@uniswap/sdk'
 import React, { CSSProperties, MutableRefObject, useCallback, useMemo } from 'react'
 import { FixedSizeList } from 'react-window'
 import { Text } from 'rebass'
 import styled from 'styled-components'
+
+import { Currency, CurrencyAmount, currencyEquals, ETHER, Token } from '../../sdk'
 import { useActiveWeb3React } from '../../hooks'
 import { useAddUserToken, useRemoveUserAddedToken } from '../../state/user/hooks'
 import { useCurrencyBalance } from '../../state/wallet/hooks'
@@ -11,8 +12,8 @@ import { useIsUserAddedToken } from '../../hooks/Tokens'
 import Column from '../Column'
 import { RowFixed } from '../Row'
 import CurrencyLogo from '../CurrencyLogo'
-import { FadedSpan, MenuItem } from './styleds'
 import Loader from '../Loader'
+import { FadedSpan, MenuItem } from './styleds'
 
 function currencyKey(currency: Currency): string {
   return currency instanceof Token ? currency.address : currency === ETHER ? 'ETHER' : ''

@@ -1,8 +1,9 @@
-import { CurrencyAmount, JSBI, Token, Trade } from '@uniswap/sdk'
 import React, { useCallback, useContext, useEffect, useMemo, useState } from 'react'
 import { ArrowDown } from 'react-feather'
 import { Text } from 'rebass'
 import { ThemeContext } from 'styled-components'
+
+import { CurrencyAmount, JSBI, Token, Trade } from '../../sdk'
 import AddressInputPanel from '../../components/AddressInputPanel'
 import { ButtonError, ButtonLight, ButtonPrimary, ButtonConfirmed } from '../../components/Button'
 import Card, { GreyCard } from '../../components/Card'

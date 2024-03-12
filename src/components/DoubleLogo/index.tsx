@@ -1,6 +1,7 @@
-import { Currency } from '@uniswap/sdk'
 import React from 'react'
 import styled from 'styled-components'
+
+import { Currency } from '../../sdk'
 import CurrencyLogo from '../CurrencyLogo'
 
 const Wrapper = styled.div<{ margin: boolean; sizeraw: number }>`

@@ -1,7 +1,8 @@
-import { Token } from '@uniswap/sdk'
 import { transparentize } from 'polished'
 import React, { useCallback, useMemo, useState } from 'react'
 import styled from 'styled-components'
+
+import { Token } from '../../sdk'
 import { useActiveWeb3React } from '../../hooks'
 import { useAllTokens } from '../../hooks/Tokens'
 import { ExternalLink, TYPE } from '../../theme'

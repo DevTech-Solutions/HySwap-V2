@@ -1,5 +1,6 @@
-import { ChainId } from '@uniswap/sdk'
 import { createStore, Store } from 'redux'
+
+import { ChainId } from '../../sdk'
 import { addPopup, removePopup, toggleSettingsMenu, toggleWalletModal, updateBlockNumber } from './actions'
 import reducer, { ApplicationState } from './reducer'
 

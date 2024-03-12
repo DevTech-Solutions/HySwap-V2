@@ -1,8 +1,9 @@
-import { Trade, TradeType } from '@uniswap/sdk'
 import React, { useContext, useMemo } from 'react'
 import { ArrowDown, AlertTriangle } from 'react-feather'
 import { Text } from 'rebass'
 import { ThemeContext } from 'styled-components'
+
+import { Trade, TradeType } from '../../sdk'
 import { Field } from '../../state/swap/actions'
 import { TYPE } from '../../theme'
 import { ButtonPrimary } from '../Button'

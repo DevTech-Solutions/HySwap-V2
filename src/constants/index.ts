@@ -1,6 +1,6 @@
-import { ChainId, JSBI, Percent, Token, WETH } from '@uniswap/sdk'
 import { AbstractConnector } from '@web3-react/abstract-connector'
 
+import { ChainId, JSBI, Percent, Token, WETH } from '../sdk'
 import { injected } from '../connectors'
 
 export const ROUTER_ADDRESS = '0x374aad26604f07d01dfb4e74a0781cb51eed7b19'

@@ -1,5 +1,6 @@
-import { Currency } from '@uniswap/sdk'
 import React, { useCallback } from 'react'
+
+import { Currency } from '../../sdk'
 import Modal from '../Modal'
 import { CurrencySearch } from './CurrencySearch'
 

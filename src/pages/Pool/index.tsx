@@ -1,7 +1,8 @@
 import React, { useContext, useMemo } from 'react'
 import { ThemeContext } from 'styled-components'
-import { Pair } from '@uniswap/sdk'
 import { Link } from 'react-router-dom'
+
+import { Pair } from '../../sdk'
 import { SwapPoolTabs } from '../../components/NavigationTabs'
 
 import Question from '../../components/QuestionHelper'

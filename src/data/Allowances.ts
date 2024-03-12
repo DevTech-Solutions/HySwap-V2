@@ -1,6 +1,6 @@
-import { Token, TokenAmount } from '@uniswap/sdk'
 import { useMemo } from 'react'
 
+import { Token, TokenAmount } from '../sdk'
 import { useTokenContract } from '../hooks/useContract'
 import { useSingleCallResult } from '../state/multicall/hooks'
 

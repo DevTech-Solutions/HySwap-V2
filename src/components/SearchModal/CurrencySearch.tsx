@@ -1,8 +1,9 @@
-import { Currency, ETHER, Token } from '@uniswap/sdk'
 import React, { KeyboardEvent, RefObject, useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import { FixedSizeList } from 'react-window'
 import { Text } from 'rebass'
+
+import { Currency, ETHER, Token } from '../../sdk'
 import { useActiveWeb3React } from '../../hooks'
 import { useAllTokens, useToken } from '../../hooks/Tokens'
 import { CloseIcon } from '../../theme'

@@ -1,5 +1,6 @@
-import { ChainId } from '@uniswap/sdk'
 import { createStore, Store } from 'redux'
+
+import { ChainId } from '../../sdk'
 import { addTransaction, checkedTransaction, clearAllTransactions, finalizeTransaction } from './actions'
 import reducer, { initialState, TransactionState } from './reducer'
 

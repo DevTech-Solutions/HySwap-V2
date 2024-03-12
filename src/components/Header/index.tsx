@@ -1,19 +1,16 @@
-import { ChainId } from '@uniswap/sdk'
 import React from 'react'
 import { isMobile } from 'react-device-detect'
 import { Text } from 'rebass'
-
 import styled from 'styled-components'
 
+import { ChainId } from '../../sdk'
 import Logo from '../../assets/svg/logo.svg'
 import WordmarkLogo from '../../assets/svg/wordmark-logo.svg'
 import { useActiveWeb3React } from '../../hooks'
 import { useDarkModeManager } from '../../state/user/hooks'
 import { useETHBalances } from '../../state/wallet/hooks'
-
 import { YellowCard } from '../Card'
 import Settings from '../Settings'
-
 import Row, { RowBetween } from '../Row'
 import Web3Status from '../Web3Status'
 

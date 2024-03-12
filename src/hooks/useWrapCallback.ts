@@ -1,5 +1,6 @@
-import { Currency, currencyEquals, ETHER, WETH } from '@uniswap/sdk'
 import { useMemo } from 'react'
+
+import { Currency, currencyEquals, ETHER, WETH } from '../sdk'
 import { tryParseAmount } from '../state/swap/hooks'
 import { useTransactionAdder } from '../state/transactions/hooks'
 import { useCurrencyBalance } from '../state/wallet/hooks'
