@@ -1,8 +1,8 @@
 import { ChainId, Token, Pair, TokenAmount, WETH, Price } from '../'
 
 describe('Pair', () => {
-  const USDC = new Token(ChainId.ZKEVMPOLYGON, '0xa40eb0638fa439e672f266886d8cdc6ded67751f', 18, 'USDC', 'USD Coin')
-  const DAI = new Token(ChainId.ZKEVMPOLYGON, '0x67385c066c14e3f5fa5ca4c7755ae13883d09a18', 18, 'DAI', 'DAI Stablecoin')
+  const USDC = new Token(ChainId.ZKEVMPOLYGON, '0xa40Eb0638fa439E672f266886D8CdC6Ded67751f', 18, 'USDC', 'USD Coin')
+  const DAI = new Token(ChainId.ZKEVMPOLYGON, '0x67385C066C14E3F5FA5Ca4C7755ae13883d09a18', 18, 'DAI', 'DAI Stablecoin')
 
   describe('#getAddress', () => {
     it('returns the correct address', () => {

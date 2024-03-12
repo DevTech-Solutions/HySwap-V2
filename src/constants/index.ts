@@ -10,16 +10,16 @@ type ChainTokenList = {
   readonly [chainId in ChainId]: Token[]
 }
 
-export const ARB = new Token(ChainId.ZKEVMPOLYGON, '0xbf838e93082cc05b61e89c6792f338ece8590d9c', 18, 'ARB', 'ARB')
-export const DAI = new Token(ChainId.ZKEVMPOLYGON, '0x67385c066c14e3f5fa5ca4c7755ae13883d09a18', 18, 'DAI', 'Dai Stablecoin')
-export const GRT = new Token(ChainId.ZKEVMPOLYGON, '0x7422ab95742858e21b9f6299ff66b24fb2a478fd', 18, 'GRT', 'GRT')
-export const LINK = new Token(ChainId.ZKEVMPOLYGON, '0xefb2408b7a3db3594a2ad179d2c08a6be1e1ae55', 18, 'LINK', 'LINK')
-export const MKR = new Token(ChainId.ZKEVMPOLYGON, '0x7bbfc2e6e6fcadcad676a1585b669bdc80d43aeb', 18, 'MKR', 'Maker')
-export const META = new Token(ChainId.ZKEVMPOLYGON, '0xe1986ced537437423837b4ef6210b51108ea76f1', 18, 'META', 'METALAMP')
-export const TRX = new Token(ChainId.ZKEVMPOLYGON, '0xb89bffe2370512b63f613ca3fd5d5ad70538ce93', 18, 'TRX', 'TRX')
-export const TUSD = new Token(ChainId.ZKEVMPOLYGON, '0x6cbec9d3123f9976f768634f4f87680524cc5101', 18, 'TUSD', 'TUSD')
-export const USDC = new Token(ChainId.ZKEVMPOLYGON, '0xa40eb0638fa439e672f266886d8cdc6ded67751f', 18, 'USDC', 'USD//C')
-export const USDT = new Token(ChainId.ZKEVMPOLYGON, '0xe751e20d336f7be90d14c84e987af4a712c48108', 18, 'USDT', 'Tether USD')
+export const ARB = new Token(ChainId.ZKEVMPOLYGON, '0xBF838e93082Cc05B61E89C6792f338ECe8590d9c', 18, 'ARB', 'ARB')
+export const DAI = new Token(ChainId.ZKEVMPOLYGON, '0x67385C066C14E3F5FA5Ca4C7755ae13883d09a18', 18, 'DAI', 'Dai Stablecoin')
+export const GRT = new Token(ChainId.ZKEVMPOLYGON, '0x7422ab95742858e21b9F6299fF66B24FB2a478FD', 18, 'GRT', 'GRT')
+export const LINK = new Token(ChainId.ZKEVMPOLYGON, '0xefb2408b7A3Db3594A2ad179d2C08A6Be1E1AE55', 18, 'LINK', 'LINK')
+export const MKR = new Token(ChainId.ZKEVMPOLYGON, '0x7BBfC2E6e6FCAdcad676a1585B669bdC80D43aeB', 18, 'MKR', 'Maker')
+export const META = new Token(ChainId.ZKEVMPOLYGON, '0xe1986ced537437423837b4Ef6210B51108EA76F1', 18, 'META', 'METALAMP')
+export const TRX = new Token(ChainId.ZKEVMPOLYGON, '0xb89BfFe2370512b63f613ca3Fd5D5Ad70538cE93', 18, 'TRX', 'TRX')
+export const TUSD = new Token(ChainId.ZKEVMPOLYGON, '0x6cBEC9d3123F9976F768634F4f87680524Cc5101', 18, 'TUSD', 'TUSD')
+export const USDC = new Token(ChainId.ZKEVMPOLYGON, '0xa40Eb0638fa439E672f266886D8CdC6Ded67751f', 18, 'USDC', 'USD//C')
+export const USDT = new Token(ChainId.ZKEVMPOLYGON, '0xe751e20d336f7bE90D14c84e987Af4A712c48108', 18, 'USDT', 'Tether USD')
 
 const WETH_ONLY: ChainTokenList = {
   [ChainId.ZKEVMPOLYGON]: [WETH[ChainId.ZKEVMPOLYGON]]
