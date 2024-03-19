@@ -41,7 +41,7 @@ type EstimatedSwapCall = SuccessfulCall | FailedCall
 function useSwapCallArguments(
   trade: Trade | undefined, // trade to execute, required
   allowedSlippage: number = INITIAL_ALLOWED_SLIPPAGE, // in bips
-  deadline: number = DEFAULT_DEADLINE_FROM_NOW, // in seconds from now
+  deadline: number = DEFAULT_DEADLINE_FROM_NOW // in seconds from now
 ): SwapCall[] {
   const { account, chainId, library } = useActiveWeb3React()
 
@@ -83,7 +83,7 @@ function useSwapCallArguments(
 export function useSwapCallback(
   trade: Trade | undefined, // trade to execute, required
   allowedSlippage: number = INITIAL_ALLOWED_SLIPPAGE, // in bips
-  deadline: number = DEFAULT_DEADLINE_FROM_NOW, // in seconds from now
+  deadline: number = DEFAULT_DEADLINE_FROM_NOW // in seconds from now
 ): { state: SwapCallbackState; callback: null | (() => Promise<string>); error: string | null } {
   const { account, chainId, library } = useActiveWeb3React()
 

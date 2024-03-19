@@ -1,17 +1,5 @@
 import JSBI from 'jsbi'
-import {
-  ChainId,
-  ETHER,
-  CurrencyAmount,
-  Pair,
-  Percent,
-  Route,
-  Token,
-  TokenAmount,
-  Trade,
-  TradeType,
-  WETH
-} from '../'
+import { ChainId, ETHER, CurrencyAmount, Pair, Percent, Route, Token, TokenAmount, Trade, TradeType, WETH } from '../'
 
 describe('Trade', () => {
   const token0 = new Token(ChainId.ZKEVMPOLYGON, '0x0000000000000000000000000000000000000001', 18, 't0')

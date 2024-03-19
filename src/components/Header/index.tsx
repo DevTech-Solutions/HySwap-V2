@@ -120,7 +120,7 @@ const BalanceText = styled(Text)`
 `
 
 const NETWORK_LABELS: { [chainId in ChainId]: string | null } = {
-  [ChainId.ZKEVMPOLYGON]: 'ZKEVMPOLYGON',
+  [ChainId.ZKEVMPOLYGON]: 'ZKEVMPOLYGON'
 }
 
 export default function Header() {

@@ -241,9 +241,7 @@ export default function AccountDetails({
         <AccountSection>
           <YourAccount>
             <InfoCard>
-              <AccountGroupingRow>
-                {formatConnectorName()}
-              </AccountGroupingRow>
+              <AccountGroupingRow>{formatConnectorName()}</AccountGroupingRow>
               <AccountGroupingRow id="web3-account-identifier-row">
                 <AccountControl>
                   <div>

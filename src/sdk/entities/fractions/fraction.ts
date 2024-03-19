@@ -12,7 +12,7 @@ enum RoundingMode {
   RoundDown = 0,
   RoundHalfUp = 1,
   RoundHalfEven = 2,
-  RoundUp = 3,
+  RoundUp = 3
 }
 
 const Decimal = toFormat(_Decimal)

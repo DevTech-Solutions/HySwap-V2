@@ -49,9 +49,5 @@ export function useMulticallContract(): Contract | null {
 }
 
 export function useSocksController(): Contract | null {
-  return useContract(
-    undefined,
-    UNISOCKS_ABI,
-    false
-  )
+  return useContract(undefined, UNISOCKS_ABI, false)
 }
