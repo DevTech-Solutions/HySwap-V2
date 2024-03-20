@@ -14,6 +14,9 @@ concurrency:
 jobs:
   build:
     runs-on: ubuntu-latest
+    env:
+      REACT_APP_CHAIN_ID: ${{ secrets.REACT_APP_CHAIN_ID }}
+      REACT_APP_NETWORK_URL: ${{ secrets.REACT_APP_NETWORK_URL }}
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v4
