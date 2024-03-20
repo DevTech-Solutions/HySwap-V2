@@ -5,7 +5,7 @@ import { Currency, ETHER, Token } from '../../sdk'
 import EthereumLogo from '../../assets/images/ethereum-logo.png'
 import Logo from '../Logo'
 
-const getTokenLogoURL = (address: string) => `/images/suggested-tokens/${address}.svg`
+const getTokenLogoURL = (address: string) => `images/suggested-tokens/${address}.svg`
 
 const StyledEthereumLogo = styled.img<{ size: string }>`
   width: ${({ size }) => size};
