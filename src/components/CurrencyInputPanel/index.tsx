@@ -1,7 +1,6 @@
 import React, { useState, useContext, useCallback } from 'react'
 import styled, { ThemeContext } from 'styled-components'
 import { darken } from 'polished'
-import { useTranslation } from 'react-i18next'
 
 import { Currency, Pair } from '../../sdk'
 import { useCurrencyBalance } from '../../state/wallet/hooks'
@@ -147,8 +146,6 @@ export default function CurrencyInputPanel({
   id,
   showCommonBases
 }: CurrencyInputPanelProps) {
-  const { t } = useTranslation()
-
   const [modalOpen, setModalOpen] = useState(false)
   const { account } = useActiveWeb3React()
   const selectedCurrencyBalance = useCurrencyBalance(account ?? undefined, currency ?? undefined)
@@ -223,7 +220,7 @@ export default function CurrencyInputPanel({
                     ? currency.symbol.slice(0, 4) +
                       '...' +
                       currency.symbol.slice(currency.symbol.length - 5, currency.symbol.length)
-                    : currency?.symbol) || t('selectToken')}
+                    : currency?.symbol) || 'Select a token'}
                 </StyledTokenName>
               )}
               {!disableCurrencySelect && <StyledDropDown selected={!!currency} />}

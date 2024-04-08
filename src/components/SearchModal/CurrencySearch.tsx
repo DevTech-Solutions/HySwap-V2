@@ -1,5 +1,4 @@
 import React, { KeyboardEvent, RefObject, useCallback, useEffect, useMemo, useRef, useState } from 'react'
-import { useTranslation } from 'react-i18next'
 import { FixedSizeList } from 'react-window'
 import { Text } from 'rebass'
 
@@ -36,7 +35,6 @@ export function CurrencySearch({
   onDismiss,
   isOpen
 }: CurrencySearchProps) {
-  const { t } = useTranslation()
   const { chainId } = useActiveWeb3React()
 
   const fixedList = useRef<FixedSizeList>()
@@ -131,7 +129,7 @@ export function CurrencySearch({
         <SearchInput
           type="text"
           id="token-search-input"
-          placeholder={t('tokenSearchPlaceholder')}
+          placeholder="Search name or paste address"
           value={searchQuery}
           ref={inputRef as RefObject<HTMLInputElement>}
           onChange={handleInput}
