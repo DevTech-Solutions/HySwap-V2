@@ -38,6 +38,15 @@ export const USDT = new Token(
   'USDT',
   'Tether USD'
 )
+export const GALA = new Token(ChainId.ZKEVMPOLYGON, '0x125E38C13d02932E56a81E084d37d38619e47df7', 18, 'GALA', 'Gala')
+export const MNT = new Token(ChainId.ZKEVMPOLYGON, '0x7e078a3f64Ade70292a03AFcABd9df34582Bd6bB', 18, 'MNT', 'Mantle')
+export const SHIB = new Token(
+  ChainId.ZKEVMPOLYGON,
+  '0xFb6Fc5842a895E13326ec7E05EE68E9c1E7b4575',
+  18,
+  'SHIB',
+  'SHIBA INU'
+)
 
 const WETH_ONLY: ChainTokenList = {
   [ChainId.ZKEVMPOLYGON]: [WETH[ChainId.ZKEVMPOLYGON]]
@@ -58,7 +67,22 @@ export const CUSTOM_BASES: { [chainId in ChainId]?: { [tokenAddress: string]: To
 // used for display in the default list when adding liquidity
 export const SUGGESTED_BASES: ChainTokenList = {
   ...WETH_ONLY,
-  [ChainId.ZKEVMPOLYGON]: [...WETH_ONLY[ChainId.ZKEVMPOLYGON], ARB, DAI, GRT, LINK, MKR, META, TRX, TUSD, USDC, USDT]
+  [ChainId.ZKEVMPOLYGON]: [
+    ...WETH_ONLY[ChainId.ZKEVMPOLYGON],
+    ARB,
+    DAI,
+    GRT,
+    LINK,
+    MKR,
+    META,
+    TRX,
+    TUSD,
+    USDC,
+    USDT,
+    GALA,
+    MNT,
+    SHIB
+  ]
 }
 
 // used to construct the list of all pairs we consider by default in the frontend
