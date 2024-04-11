@@ -3,59 +3,35 @@ import { AbstractConnector } from '@web3-react/abstract-connector'
 import { ChainId, JSBI, Percent, Token, WETH } from '../sdk'
 import { injected } from '../connectors'
 
-export const ROUTER_ADDRESS = '0x374aad26604f07d01dfb4e74a0781cb51eed7b19'
+export const ROUTER_ADDRESS = '0xBF838e93082Cc05B61E89C6792f338ECe8590d9c'
 
 // a list of tokens by chain
 type ChainTokenList = {
   readonly [chainId in ChainId]: Token[]
 }
 
-export const ARB = new Token(ChainId.ZKEVMPOLYGON, '0xBF838e93082Cc05B61E89C6792f338ECe8590d9c', 18, 'ARB', 'ARB')
-export const DAI = new Token(
-  ChainId.ZKEVMPOLYGON,
-  '0x67385C066C14E3F5FA5Ca4C7755ae13883d09a18',
-  18,
-  'DAI',
-  'Dai Stablecoin'
-)
-export const GRT = new Token(ChainId.ZKEVMPOLYGON, '0x7422ab95742858e21b9F6299fF66B24FB2a478FD', 18, 'GRT', 'GRT')
-export const LINK = new Token(ChainId.ZKEVMPOLYGON, '0xefb2408b7A3Db3594A2ad179d2C08A6Be1E1AE55', 18, 'LINK', 'LINK')
-export const MKR = new Token(ChainId.ZKEVMPOLYGON, '0x7BBfC2E6e6FCAdcad676a1585B669bdC80D43aeB', 18, 'MKR', 'Maker')
-export const META = new Token(
-  ChainId.ZKEVMPOLYGON,
-  '0xe1986ced537437423837b4Ef6210B51108EA76F1',
-  18,
-  'META',
-  'METALAMP'
-)
-export const TRX = new Token(ChainId.ZKEVMPOLYGON, '0xb89BfFe2370512b63f613ca3Fd5D5Ad70538cE93', 18, 'TRX', 'TRX')
-export const TUSD = new Token(ChainId.ZKEVMPOLYGON, '0x6cBEC9d3123F9976F768634F4f87680524Cc5101', 18, 'TUSD', 'TUSD')
-export const USDC = new Token(ChainId.ZKEVMPOLYGON, '0xa40Eb0638fa439E672f266886D8CdC6Ded67751f', 18, 'USDC', 'USD//C')
-export const USDT = new Token(
-  ChainId.ZKEVMPOLYGON,
-  '0xe751e20d336f7bE90D14c84e987Af4A712c48108',
-  18,
-  'USDT',
-  'Tether USD'
-)
-export const GALA = new Token(ChainId.ZKEVMPOLYGON, '0x125E38C13d02932E56a81E084d37d38619e47df7', 18, 'GALA', 'Gala')
-export const MNT = new Token(ChainId.ZKEVMPOLYGON, '0x7e078a3f64Ade70292a03AFcABd9df34582Bd6bB', 18, 'MNT', 'Mantle')
-export const SHIB = new Token(
-  ChainId.ZKEVMPOLYGON,
-  '0xFb6Fc5842a895E13326ec7E05EE68E9c1E7b4575',
-  18,
-  'SHIB',
-  'SHIBA INU'
-)
+export const ARB = new Token(ChainId.CARDONA, '0x67385C066C14E3F5FA5Ca4C7755ae13883d09a18', 18, 'ARB', 'ARB')
+export const DAI = new Token(ChainId.CARDONA, '0x7422ab95742858e21b9F6299fF66B24FB2a478FD', 18, 'DAI', 'Dai Stablecoin')
+export const GRT = new Token(ChainId.CARDONA, '0xefb2408b7A3Db3594A2ad179d2C08A6Be1E1AE55', 18, 'GRT', 'GRT')
+export const LINK = new Token(ChainId.CARDONA, '0x7BBfC2E6e6FCAdcad676a1585B669bdC80D43aeB', 18, 'LINK', 'LINK')
+export const MKR = new Token(ChainId.CARDONA, '0xe1986ced537437423837b4Ef6210B51108EA76F1', 18, 'MKR', 'Maker')
+export const META = new Token(ChainId.CARDONA, '0xb89BfFe2370512b63f613ca3Fd5D5Ad70538cE93', 18, 'META', 'METALAMP')
+export const TRX = new Token(ChainId.CARDONA, '0x6cBEC9d3123F9976F768634F4f87680524Cc5101', 18, 'TRX', 'TRX')
+export const TUSD = new Token(ChainId.CARDONA, '0xa40Eb0638fa439E672f266886D8CdC6Ded67751f', 18, 'TUSD', 'TUSD')
+export const USDC = new Token(ChainId.CARDONA, '0xe751e20d336f7bE90D14c84e987Af4A712c48108', 18, 'USDC', 'USD//C')
+export const USDT = new Token(ChainId.CARDONA, '0x120D0f5447313514e5DA0A3FdCd60Be730442235', 18, 'USDT', 'Tether USD')
+// export const GALA = new Token(ChainId.CARDONA, '0x125E38C13d02932E56a81E084d37d38619e47df7', 18, 'GALA', 'Gala')
+// export const MNT = new Token(ChainId.CARDONA, '0x7e078a3f64Ade70292a03AFcABd9df34582Bd6bB', 18, 'MNT', 'Mantle')
+// export const SHIB = new Token(ChainId.CARDONA, '0xFb6Fc5842a895E13326ec7E05EE68E9c1E7b4575', 18, 'SHIB', 'SHIBA INU')
 
 const WETH_ONLY: ChainTokenList = {
-  [ChainId.ZKEVMPOLYGON]: [WETH[ChainId.ZKEVMPOLYGON]]
+  [ChainId.CARDONA]: [WETH[ChainId.CARDONA]]
 }
 
 // used to construct intermediary pairs for trading
 export const BASES_TO_CHECK_TRADES_AGAINST: ChainTokenList = {
   ...WETH_ONLY,
-  [ChainId.ZKEVMPOLYGON]: [...WETH_ONLY[ChainId.ZKEVMPOLYGON], DAI, USDC, USDT, MKR]
+  [ChainId.CARDONA]: [...WETH_ONLY[ChainId.CARDONA], DAI, USDC, USDT, MKR]
 }
 
 /**
@@ -67,8 +43,8 @@ export const CUSTOM_BASES: { [chainId in ChainId]?: { [tokenAddress: string]: To
 // used for display in the default list when adding liquidity
 export const SUGGESTED_BASES: ChainTokenList = {
   ...WETH_ONLY,
-  [ChainId.ZKEVMPOLYGON]: [
-    ...WETH_ONLY[ChainId.ZKEVMPOLYGON],
+  [ChainId.CARDONA]: [
+    ...WETH_ONLY[ChainId.CARDONA],
     ARB,
     DAI,
     GRT,
@@ -78,21 +54,21 @@ export const SUGGESTED_BASES: ChainTokenList = {
     TRX,
     TUSD,
     USDC,
-    USDT,
-    GALA,
-    MNT,
-    SHIB
+    USDT
+    // GALA,
+    // MNT,
+    // SHIB
   ]
 }
 
 // used to construct the list of all pairs we consider by default in the frontend
 export const BASES_TO_TRACK_LIQUIDITY_FOR: ChainTokenList = {
   ...WETH_ONLY,
-  [ChainId.ZKEVMPOLYGON]: [...WETH_ONLY[ChainId.ZKEVMPOLYGON], DAI, USDC, USDT]
+  [ChainId.CARDONA]: [...WETH_ONLY[ChainId.CARDONA], DAI, USDC, USDT]
 }
 
 export const PINNED_PAIRS: { readonly [chainId in ChainId]?: [Token, Token][] } = {
-  [ChainId.ZKEVMPOLYGON]: [
+  [ChainId.CARDONA]: [
     [USDC, USDT],
     [DAI, USDT]
   ]

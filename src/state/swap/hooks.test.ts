@@ -8,12 +8,12 @@ describe('hooks', () => {
       expect(
         queryParametersToSwapState(
           parse(
-            '?inputCurrency=ETH&outputCurrency=0x67385c066c14e3f5fa5ca4c7755ae13883d09a18&exactAmount=20.5&exactField=outPUT',
+            '?inputCurrency=ETH&outputCurrency=0x7422ab95742858e21b9f6299ff66b24fb2a478fd&exactAmount=20.5&exactField=outPUT',
             { parseArrays: false, ignoreQueryPrefix: true }
           )
         )
       ).toEqual({
-        [Field.OUTPUT]: { currencyId: '0x67385C066C14E3F5FA5Ca4C7755ae13883d09a18' },
+        [Field.OUTPUT]: { currencyId: '0x7422ab95742858e21b9F6299fF66B24FB2a478FD' },
         [Field.INPUT]: { currencyId: 'ETH' },
         typedValue: '20.5',
         independentField: Field.OUTPUT

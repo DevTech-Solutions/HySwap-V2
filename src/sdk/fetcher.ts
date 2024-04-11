@@ -10,8 +10,8 @@ import { ChainId } from './constants'
 import { Token } from './entities/token'
 
 let TOKEN_DECIMALS_CACHE: { [chainId: number]: { [address: string]: number } } = {
-  [ChainId.ZKEVMPOLYGON]: {
-    '0xbf838e93082cc05b61e89c6792f338ece8590d9c': 18 // ARB
+  [ChainId.CARDONA]: {
+    '0x67385C066C14E3F5FA5Ca4C7755ae13883d09a18': 18 // ARB
   }
 }
 

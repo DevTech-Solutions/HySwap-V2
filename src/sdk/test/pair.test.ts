@@ -1,8 +1,8 @@
 import { ChainId, Token, Pair, TokenAmount, WETH, Price } from '../'
 
 describe('Pair', () => {
-  const USDC = new Token(ChainId.ZKEVMPOLYGON, '0xa40Eb0638fa439E672f266886D8CdC6Ded67751f', 18, 'USDC', 'USD Coin')
-  const DAI = new Token(ChainId.ZKEVMPOLYGON, '0x67385C066C14E3F5FA5Ca4C7755ae13883d09a18', 18, 'DAI', 'DAI Stablecoin')
+  const USDC = new Token(ChainId.CARDONA, '0x120D0f5447313514e5DA0A3FdCd60Be730442235', 18, 'USDC', 'USD Coin')
+  const DAI = new Token(ChainId.CARDONA, '0x7422ab95742858e21b9F6299fF66B24FB2a478FD', 18, 'DAI', 'DAI Stablecoin')
 
   describe('#getAddress', () => {
     it('returns the correct address', () => {
@@ -73,7 +73,7 @@ describe('Pair', () => {
     })
 
     it('throws if invalid token', () => {
-      expect(() => pair.priceOf(WETH[ChainId.ZKEVMPOLYGON])).toThrow('TOKEN')
+      expect(() => pair.priceOf(WETH[ChainId.CARDONA])).toThrow('TOKEN')
     })
   })
 
@@ -89,22 +89,22 @@ describe('Pair', () => {
 
     it('throws if not in the pair', () => {
       expect(() =>
-        new Pair(new TokenAmount(DAI, '101'), new TokenAmount(USDC, '100')).reserveOf(WETH[ChainId.ZKEVMPOLYGON])
+        new Pair(new TokenAmount(DAI, '101'), new TokenAmount(USDC, '100')).reserveOf(WETH[ChainId.CARDONA])
       ).toThrow('TOKEN')
     })
   })
 
   describe('#chainId', () => {
     it('returns the token0 chainId', () => {
-      expect(new Pair(new TokenAmount(USDC, '100'), new TokenAmount(DAI, '100')).chainId).toEqual(ChainId.ZKEVMPOLYGON)
-      expect(new Pair(new TokenAmount(DAI, '100'), new TokenAmount(USDC, '100')).chainId).toEqual(ChainId.ZKEVMPOLYGON)
+      expect(new Pair(new TokenAmount(USDC, '100'), new TokenAmount(DAI, '100')).chainId).toEqual(ChainId.CARDONA)
+      expect(new Pair(new TokenAmount(DAI, '100'), new TokenAmount(USDC, '100')).chainId).toEqual(ChainId.CARDONA)
     })
   })
   describe('#involvesToken', () => {
     expect(new Pair(new TokenAmount(USDC, '100'), new TokenAmount(DAI, '100')).involvesToken(USDC)).toEqual(true)
     expect(new Pair(new TokenAmount(USDC, '100'), new TokenAmount(DAI, '100')).involvesToken(DAI)).toEqual(true)
     expect(
-      new Pair(new TokenAmount(USDC, '100'), new TokenAmount(DAI, '100')).involvesToken(WETH[ChainId.ZKEVMPOLYGON])
+      new Pair(new TokenAmount(USDC, '100'), new TokenAmount(DAI, '100')).involvesToken(WETH[ChainId.CARDONA])
     ).toEqual(false)
   })
 })

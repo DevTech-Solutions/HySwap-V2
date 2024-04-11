@@ -17,7 +17,7 @@ export function isAddress(value: any): string | false {
 }
 
 const SCAN_PREFIXES: { [chainId in ChainId]: string } = {
-  1442: 'testnet-zkevm.'
+  2442: 'cardona-zkevm.'
 }
 
 export function getScanLink(chainId: ChainId, data: string, type: 'transaction' | 'token' | 'address'): string {

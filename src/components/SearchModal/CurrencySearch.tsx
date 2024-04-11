@@ -122,14 +122,14 @@ export function CurrencySearch({
         <RowBetween>
           <Text fontWeight={500} fontSize={16}>
             Select a token
-            <QuestionHelper text="Find a token by searching for its name or symbol or by pasting its address below." />
+            <QuestionHelper text="Find a token by pasting its address below." />
           </Text>
           <CloseIcon onClick={onDismiss} />
         </RowBetween>
         <SearchInput
           type="text"
           id="token-search-input"
-          placeholder="Search name or paste address"
+          placeholder="Paste address"
           value={searchQuery}
           ref={inputRef as RefObject<HTMLInputElement>}
           onChange={handleInput}

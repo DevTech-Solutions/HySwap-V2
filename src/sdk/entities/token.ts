@@ -57,9 +57,9 @@ export function currencyEquals(currencyA: Currency, currencyB: Currency): boolea
 }
 
 export const WETH = {
-  [ChainId.ZKEVMPOLYGON]: new Token(
-    ChainId.ZKEVMPOLYGON,
-    '0x23Be4c7d1040Ff407F5e1d020D8Ee4ed0abBF729',
+  [ChainId.CARDONA]: new Token(
+    ChainId.CARDONA,
+    '0x944F78712eD84511024bBbca3Be099Df6893Be3c',
     18,
     'WETH',
     'Wrapped Ether'
