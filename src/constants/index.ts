@@ -20,9 +20,9 @@ export const TRX = new Token(ChainId.CARDONA, '0x6cBEC9d3123F9976F768634F4f87680
 export const TUSD = new Token(ChainId.CARDONA, '0xa40Eb0638fa439E672f266886D8CdC6Ded67751f', 18, 'TUSD', 'TUSD')
 export const USDC = new Token(ChainId.CARDONA, '0xe751e20d336f7bE90D14c84e987Af4A712c48108', 18, 'USDC', 'USD//C')
 export const USDT = new Token(ChainId.CARDONA, '0x120D0f5447313514e5DA0A3FdCd60Be730442235', 18, 'USDT', 'Tether USD')
-// export const GALA = new Token(ChainId.CARDONA, '0x125E38C13d02932E56a81E084d37d38619e47df7', 18, 'GALA', 'Gala')
-// export const MNT = new Token(ChainId.CARDONA, '0x7e078a3f64Ade70292a03AFcABd9df34582Bd6bB', 18, 'MNT', 'Mantle')
-// export const SHIB = new Token(ChainId.CARDONA, '0xFb6Fc5842a895E13326ec7E05EE68E9c1E7b4575', 18, 'SHIB', 'SHIBA INU')
+export const GALA = new Token(ChainId.CARDONA, '0x7De9cC01cfF47760D5DECC901Bb783e62c009a68', 18, 'GALA', 'Gala')
+export const MNT = new Token(ChainId.CARDONA, '0xe0840f693e4fBf888448dAbe00a6d3203F4E67F8', 18, 'MNT', 'Mantle')
+export const SHIB = new Token(ChainId.CARDONA, '0x41Fb5b5BA5dc9d0D90c59Fa9123ae0A14eC5A553', 18, 'SHIB', 'SHIBA INU')
 
 const WETH_ONLY: ChainTokenList = {
   [ChainId.CARDONA]: [WETH[ChainId.CARDONA]]
@@ -54,10 +54,10 @@ export const SUGGESTED_BASES: ChainTokenList = {
     TRX,
     TUSD,
     USDC,
-    USDT
-    // GALA,
-    // MNT,
-    // SHIB
+    USDT,
+    GALA,
+    MNT,
+    SHIB
   ]
 }
 

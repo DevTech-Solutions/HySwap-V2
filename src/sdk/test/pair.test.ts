@@ -1,12 +1,12 @@
 import { ChainId, Token, Pair, TokenAmount, WETH, Price } from '../'
 
 describe('Pair', () => {
-  const USDC = new Token(ChainId.CARDONA, '0x120D0f5447313514e5DA0A3FdCd60Be730442235', 18, 'USDC', 'USD Coin')
+  const USDC = new Token(ChainId.CARDONA, '0xe751e20d336f7bE90D14c84e987Af4A712c48108', 18, 'USDC', 'USD Coin')
   const DAI = new Token(ChainId.CARDONA, '0x7422ab95742858e21b9F6299fF66B24FB2a478FD', 18, 'DAI', 'DAI Stablecoin')
 
   describe('#getAddress', () => {
     it('returns the correct address', () => {
-      expect(Pair.getAddress(USDC, DAI)).toEqual('0xd854f96c5eab46Cd124Ce9BD927c89B4a03eAb96')
+      expect(Pair.getAddress(USDC, DAI)).toEqual('0xD5AC4f76b50925951Cd964b705725DD065E69f97')
     })
   })
 
