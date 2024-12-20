@@ -46,20 +46,20 @@ export const SUGGESTED_BASES: ChainTokenList = {
   ...WETH_ONLY,
   [ChainId.CARDONA]: [
     ...WETH_ONLY[ChainId.CARDONA],
-    APE,
-    ARB,
-    DAI,
-    GRT,
-    LINK,
-    MKR,
-    META,
-    TRX,
-    TUSD,
-    USDC,
-    USDT,
-    GALA,
-    MNT,
-    SHIB
+    // APE,
+    // ARB,
+    // DAI,
+    // GRT,
+    // LINK,
+    // MKR,
+    // META,
+    // TRX,
+    // TUSD,
+    // USDC,
+    // USDT,
+    // GALA,
+    // MNT,
+    // SHIB
   ]
 }
 

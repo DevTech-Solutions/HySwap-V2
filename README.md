@@ -14,6 +14,17 @@ yarn
 yarn start
 ```
 
+### Build
+
+```bash
+yarn build
+```
+### Deploy
+
+```bash
+firebase deploy --only hosting:hyswap
+```
+
 ### Configuring the environment (optional)
 
 To have the interface default to a different network when a wallet is not connected:

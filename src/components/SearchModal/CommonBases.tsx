@@ -40,7 +40,7 @@ export default function CommonBases({
     <AutoColumn gap="md">
       <AutoRow>
         <Text fontWeight={500} fontSize={14}>
-          Metalamp bases
+          Hychain Tokens
         </Text>
       </AutoRow>
       <AutoRow gap="4px">
