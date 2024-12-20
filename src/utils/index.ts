@@ -17,11 +17,11 @@ export function isAddress(value: any): string | false {
 }
 
 const SCAN_PREFIXES: { [chainId in ChainId]: string } = {
-  2442: 'cardona-zkevm.'
+  2911: 'explorer.hychain'
 }
 
 export function getScanLink(chainId: ChainId, data: string, type: 'transaction' | 'token' | 'address'): string {
-  const prefix = `https://${SCAN_PREFIXES[chainId] || ''}polygonscan.com`
+  const prefix = `https://${SCAN_PREFIXES[chainId] || ''}.com`
 
   switch (type) {
     case 'transaction': {

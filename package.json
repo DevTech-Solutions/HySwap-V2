@@ -1,6 +1,6 @@
 {
-  "name": "@lampswap/interface",
-  "description": "Lampswap Interface",
+  "name": "@hydexswap/v2",
+  "description": "Hydex Swap V2",
   "homepage": ".",
   "private": true,
   "dependencies": {

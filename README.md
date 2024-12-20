@@ -1,4 +1,4 @@
-# Lampswap Interface
+# HySwap V2 Interface
 
 ## Development
 

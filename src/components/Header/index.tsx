@@ -4,8 +4,8 @@ import { Text } from 'rebass'
 import styled from 'styled-components'
 
 import { ChainId } from '../../sdk'
-import Logo from '../../assets/images/logo.svg'
-import WordmarkLogo from '../../assets/images/wordmark-logo.svg'
+import Logo from '../../assets/images/logo.png'
+import WordmarkLogo from '../../assets/images/wordmark-logo.png'
 import { useActiveWeb3React } from '../../hooks'
 import { useDarkModeManager } from '../../state/user/hooks'
 import { useETHBalances } from '../../state/wallet/hooks'
@@ -120,7 +120,7 @@ const BalanceText = styled(Text)`
 `
 
 const NETWORK_LABELS: { [chainId in ChainId]: string | null } = {
-  [ChainId.CARDONA]: 'CARDONA'
+  [ChainId.CARDONA]: 'Hychain'
 }
 
 export default function Header() {
@@ -136,11 +136,11 @@ export default function Header() {
           <Title href=".">
             {isDark ? (
               <UniIcon>
-                <img src={Logo} alt="logo" />
+                <img style={{ width: '50%', height: '50%' }} src={Logo} alt="logo" />
               </UniIcon>
             ) : (
               <TitleText>
-                <img style={{ marginLeft: '4px', marginTop: '4px' }} src={WordmarkLogo} alt="logo" />
+                <img style={{ marginLeft: '4px', marginTop: '4px', width: '50%', height: '50%' }} src={WordmarkLogo} alt="logo" />
               </TitleText>
             )}
           </Title>
@@ -153,7 +153,7 @@ export default function Header() {
             <AccountElement active={!!account} style={{ pointerEvents: 'auto' }}>
               {account && userEthBalance ? (
                 <BalanceText style={{ flexShrink: 0 }} pl="0.75rem" pr="0.5rem" fontWeight={500}>
-                  {userEthBalance?.toSignificant(4)} ETH
+                  {userEthBalance?.toSignificant(4)} TOPIA
                 </BalanceText>
               ) : null}
               <Web3Status />

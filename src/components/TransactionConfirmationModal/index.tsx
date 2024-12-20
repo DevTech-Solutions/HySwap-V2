@@ -95,7 +95,7 @@ function TransactionSubmittedContent({
           {chainId && hash && (
             <ExternalLink href={getScanLink(chainId, hash, 'transaction')}>
               <Text fontWeight={500} fontSize={14} color={theme.primary1}>
-                View on Polygonscan
+                View on Hychain Explorer
               </Text>
             </ExternalLink>
           )}

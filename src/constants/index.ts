@@ -3,13 +3,14 @@ import { AbstractConnector } from '@web3-react/abstract-connector'
 import { ChainId, JSBI, Percent, Token, WETH } from '../sdk'
 import { injected } from '../connectors'
 
-export const ROUTER_ADDRESS = '0xBF838e93082Cc05B61E89C6792f338ECe8590d9c'
+export const ROUTER_ADDRESS = '0xE595e3344128BC092dFa1bF023Fc554b3187E404'
 
 // a list of tokens by chain
 type ChainTokenList = {
   readonly [chainId in ChainId]: Token[]
 }
 
+export const APE = new Token(ChainId.CARDONA, '0x5e1FFf11fC587bE6f9ACD183908227FE6075cfF4', 18, 'APE', 'APE COIN')
 export const ARB = new Token(ChainId.CARDONA, '0x67385C066C14E3F5FA5Ca4C7755ae13883d09a18', 18, 'ARB', 'ARB')
 export const DAI = new Token(ChainId.CARDONA, '0x7422ab95742858e21b9F6299fF66B24FB2a478FD', 18, 'DAI', 'Dai Stablecoin')
 export const GRT = new Token(ChainId.CARDONA, '0xefb2408b7A3Db3594A2ad179d2C08A6Be1E1AE55', 18, 'GRT', 'GRT')
@@ -45,6 +46,7 @@ export const SUGGESTED_BASES: ChainTokenList = {
   ...WETH_ONLY,
   [ChainId.CARDONA]: [
     ...WETH_ONLY[ChainId.CARDONA],
+    APE,
     ARB,
     DAI,
     GRT,
