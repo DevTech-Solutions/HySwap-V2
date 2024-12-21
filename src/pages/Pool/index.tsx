@@ -76,7 +76,7 @@ export default function Pool() {
             {!account ? (
               <LightCard padding="40px">
                 <TYPE.body color={theme.text3} textAlign="center">
-                  Connect to a wallet to view your liquidity.
+                  Connect wallet to view your liquidity.
                 </TYPE.body>
               </LightCard>
             ) : v2IsLoading ? (

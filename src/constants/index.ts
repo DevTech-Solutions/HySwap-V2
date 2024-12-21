@@ -10,7 +10,14 @@ type ChainTokenList = {
   readonly [chainId in ChainId]: Token[]
 }
 
-export const APE = new Token(ChainId.CARDONA, '0x5e1FFf11fC587bE6f9ACD183908227FE6075cfF4', 18, 'APE', 'APE COIN')
+export const ARKCOIN = new Token(ChainId.CARDONA, '0x1c291b49507F7C2c0feF4d0910E6A0B9E917e7D5', 18, 'ArkCoin', 'ArkDev')
+export const TEMPCOIN = new Token(ChainId.CARDONA, '0x2621BB6558aDb6a005E371ADE379fCd4795CAB26', 18, 'TempCoin', 'Temp')
+export const BAGUETTECOIN = new Token(ChainId.CARDONA, '0x15d4e90c8549C10231EB682E0E0Db7B7B4C4F089', 18, 'Baguettes', 'Yum')
+export const COPIA = new Token(ChainId.CARDONA, '0x4a40F699Edc135eBAaC85433ae055791ECf53A4b', 18, 'COPIA', 'COPIA')
+
+
+
+
 export const ARB = new Token(ChainId.CARDONA, '0x67385C066C14E3F5FA5Ca4C7755ae13883d09a18', 18, 'ARB', 'ARB')
 export const DAI = new Token(ChainId.CARDONA, '0x7422ab95742858e21b9F6299fF66B24FB2a478FD', 18, 'DAI', 'Dai Stablecoin')
 export const GRT = new Token(ChainId.CARDONA, '0xefb2408b7A3Db3594A2ad179d2C08A6Be1E1AE55', 18, 'GRT', 'GRT')
@@ -46,6 +53,10 @@ export const SUGGESTED_BASES: ChainTokenList = {
   ...WETH_ONLY,
   [ChainId.CARDONA]: [
     ...WETH_ONLY[ChainId.CARDONA],
+    ARKCOIN,
+    TEMPCOIN,
+    BAGUETTECOIN,
+    COPIA,
     // APE,
     // ARB,
     // DAI,
@@ -66,7 +77,7 @@ export const SUGGESTED_BASES: ChainTokenList = {
 // used to construct the list of all pairs we consider by default in the frontend
 export const BASES_TO_TRACK_LIQUIDITY_FOR: ChainTokenList = {
   ...WETH_ONLY,
-  [ChainId.CARDONA]: [...WETH_ONLY[ChainId.CARDONA], DAI, USDC, USDT]
+  [ChainId.CARDONA]: [...WETH_ONLY[ChainId.CARDONA], COPIA, ARKCOIN, TEMPCOIN, BAGUETTECOIN]
 }
 
 export const PINNED_PAIRS: { readonly [chainId in ChainId]?: [Token, Token][] } = {

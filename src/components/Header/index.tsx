@@ -133,7 +133,7 @@ export default function Header() {
     <HeaderFrame>
       <RowBetween style={{ alignItems: 'flex-start' }} padding="1rem 1rem 0 1rem">
         <HeaderElement>
-          <Title href=".">
+          <Title href="https://hydex.gg">
             {isDark ? (
               <UniIcon>
                 <img style={{ width: '50%', height: '50%' }} src={Logo} alt="logo" />
