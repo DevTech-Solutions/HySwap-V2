@@ -14,8 +14,7 @@ export const ARKCOIN = new Token(ChainId.CARDONA, '0x1c291b49507F7C2c0feF4d0910E
 export const TEMPCOIN = new Token(ChainId.CARDONA, '0x2621BB6558aDb6a005E371ADE379fCd4795CAB26', 18, 'TempCoin', 'Temp')
 export const BAGUETTECOIN = new Token(ChainId.CARDONA, '0x15d4e90c8549C10231EB682E0E0Db7B7B4C4F089', 18, 'Baguettes', 'Yum')
 export const COPIA = new Token(ChainId.CARDONA, '0x4a40F699Edc135eBAaC85433ae055791ECf53A4b', 18, 'COPIA', 'COPIA')
-
-
+export const HYAPE = new Token(ChainId.CARDONA, '0xfef7051ac90f93E645fD5a97C49F965834f2A14B', 18, 'HYAPE', 'HyApeCoin')
 
 
 export const ARB = new Token(ChainId.CARDONA, '0x67385C066C14E3F5FA5Ca4C7755ae13883d09a18', 18, 'ARB', 'ARB')
@@ -57,6 +56,7 @@ export const SUGGESTED_BASES: ChainTokenList = {
     TEMPCOIN,
     BAGUETTECOIN,
     COPIA,
+    HYAPE,
     // APE,
     // ARB,
     // DAI,
@@ -77,7 +77,7 @@ export const SUGGESTED_BASES: ChainTokenList = {
 // used to construct the list of all pairs we consider by default in the frontend
 export const BASES_TO_TRACK_LIQUIDITY_FOR: ChainTokenList = {
   ...WETH_ONLY,
-  [ChainId.CARDONA]: [...WETH_ONLY[ChainId.CARDONA], COPIA, ARKCOIN, TEMPCOIN, BAGUETTECOIN]
+  [ChainId.CARDONA]: [...WETH_ONLY[ChainId.CARDONA], COPIA, ARKCOIN, TEMPCOIN, BAGUETTECOIN, HYAPE]
 }
 
 export const PINNED_PAIRS: { readonly [chainId in ChainId]?: [Token, Token][] } = {
