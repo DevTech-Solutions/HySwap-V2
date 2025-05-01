@@ -1,5 +1,11 @@
 import { createAction } from '@reduxjs/toolkit'
 
+export enum ApplicationModal {
+  WALLET,
+  SETTINGS,
+  CHAIN_PROMO
+}
+
 export type PopupContent = {
   txn: {
     hash: string
@@ -15,3 +21,4 @@ export const addPopup = createAction<{ key?: string; removeAfterMs?: number | nu
   'app/addPopup'
 )
 export const removePopup = createAction<{ key: string }>('app/removePopup')
+export const setOpenModal = createAction<ApplicationModal | null>('application/setOpenModal')

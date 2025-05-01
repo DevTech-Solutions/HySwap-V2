@@ -17,6 +17,7 @@ import RemoveLiquidity from './RemoveLiquidity'
 import { RedirectOldRemoveLiquidityPathStructure } from './RemoveLiquidity/redirects'
 import Swap from './Swap'
 import { RedirectPathToSwapOnly, RedirectToSwap } from './Swap/redirects'
+import NewChainModal from '../components/Promo/NewChainModal'
 
 const AppWrapper = styled.div`
   display: flex;
@@ -81,6 +82,7 @@ export default function App() {
               </Switch>
             </Web3ReactManager>
             <Marginer />
+            <NewChainModal />
           </BodyWrapper>
         </AppWrapper>
       </HashRouter>

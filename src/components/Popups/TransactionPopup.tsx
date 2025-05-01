@@ -7,6 +7,7 @@ import { ExternalLink } from '../../theme/components'
 import { getScanLink } from '../../utils'
 import { AutoColumn } from '../Column'
 import { AutoRow } from '../Row'
+import { ChainId } from '../../sdk'
 
 const RowNoFlex = styled(AutoRow)`
   flex-wrap: nowrap;
@@ -32,7 +33,7 @@ export default function TransactionPopup({
       </div>
       <AutoColumn gap="8px">
         <TYPE.body fontWeight={500}>{summary ?? 'Hash: ' + hash.slice(0, 8) + '...' + hash.slice(58, 65)}</TYPE.body>
-        {chainId && <ExternalLink href={getScanLink(chainId, hash, 'transaction')}>View on Hychain Explorer</ExternalLink>}
+        {chainId && <ExternalLink href={getScanLink(chainId, hash, 'transaction')}>View on {chainId === ChainId.CARDONA ? 'Hychain Explorer' : 'ApeScan'}</ExternalLink>}
       </AutoColumn>
     </RowNoFlex>
   )

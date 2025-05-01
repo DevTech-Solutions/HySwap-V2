@@ -26,9 +26,12 @@ let PAIR_ADDRESS_CACHE: { [token0Address: string]: { [token1Address: string]: st
 export class Pair {
   public readonly liquidityToken: Token
   private readonly tokenAmounts: [TokenAmount, TokenAmount]
+  public readonly chainId: ChainId
 
   public static getAddress(tokenA: Token, tokenB: Token): string {
-    const tokens = tokenA.sortsBefore(tokenB) ? [tokenA, tokenB] : [tokenB, tokenA] // does safety checks
+    const tokens = tokenA.sortsBefore(tokenB) ? [tokenA, tokenB] : [tokenB, tokenA]
+    invariant(tokens[0].chainId === tokens[1].chainId, 'CHAIN_ID')
+    const chainId = tokens[0].chainId
 
     if (PAIR_ADDRESS_CACHE?.[tokens[0].address]?.[tokens[1].address] === undefined) {
       PAIR_ADDRESS_CACHE = {
@@ -36,9 +39,9 @@ export class Pair {
         [tokens[0].address]: {
           ...PAIR_ADDRESS_CACHE?.[tokens[0].address],
           [tokens[1].address]: getCreate2Address(
-            FACTORY_ADDRESS,
+            FACTORY_ADDRESS(chainId),
             keccak256(['bytes'], [pack(['address', 'address'], [tokens[0].address, tokens[1].address])]),
-            INIT_CODE_HASH
+            INIT_CODE_HASH(chainId)
           )
         }
       }
@@ -48,11 +51,15 @@ export class Pair {
   }
 
   public constructor(tokenAmountA: TokenAmount, tokenAmountB: TokenAmount) {
-    const tokenAmounts = tokenAmountA.token.sortsBefore(tokenAmountB.token) // does safety checks
+    const tokenAmounts = tokenAmountA.token.sortsBefore(tokenAmountB.token)
       ? [tokenAmountA, tokenAmountB]
       : [tokenAmountB, tokenAmountA]
+
+    invariant(tokenAmounts[0].token.chainId === tokenAmounts[1].token.chainId, 'CHAIN_ID')
+    this.chainId = tokenAmounts[0].token.chainId
+
     this.liquidityToken = new Token(
-      tokenAmounts[0].token.chainId,
+      this.chainId,
       Pair.getAddress(tokenAmounts[0].token, tokenAmounts[1].token),
       18,
       'UNI-V2',
@@ -90,13 +97,6 @@ export class Pair {
   public priceOf(token: Token): Price {
     invariant(this.involvesToken(token), 'TOKEN')
     return token.equals(this.token0) ? this.token0Price : this.token1Price
-  }
-
-  /**
-   * Returns the chain ID of the tokens in the pair.
-   */
-  public get chainId(): ChainId {
-    return this.token0.chainId
   }
 
   public get token0(): Token {

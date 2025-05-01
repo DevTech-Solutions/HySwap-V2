@@ -1,6 +1,6 @@
 import { useCallback, useMemo } from 'react'
 import { useActiveWeb3React } from '../../hooks'
-import { addPopup, PopupContent, removePopup, toggleWalletModal, toggleSettingsMenu } from './actions'
+import { addPopup, PopupContent, removePopup, toggleWalletModal, toggleSettingsMenu, ApplicationModal, setOpenModal } from './actions'
 import { useSelector, useDispatch } from 'react-redux'
 import { AppState } from '../index'
 
@@ -55,4 +55,14 @@ export function useRemovePopup(): (key: string) => void {
 export function useActivePopups(): AppState['application']['popupList'] {
   const list = useSelector((state: AppState) => state.application.popupList)
   return useMemo(() => list.filter(item => item.show), [list])
+}
+
+export function useModalOpen(modal: ApplicationModal): boolean {
+  return useSelector((state: AppState) => state.application.openModal === modal)
+}
+
+export function useToggleModal(modal: ApplicationModal): () => void {
+  const open = useModalOpen(modal)
+  const dispatch = useDispatch()
+  return useCallback(() => dispatch(setOpenModal(open ? null : modal)), [dispatch, modal, open])
 }

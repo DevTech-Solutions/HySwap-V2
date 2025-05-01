@@ -3,7 +3,10 @@ import { AbstractConnector } from '@web3-react/abstract-connector'
 import { ChainId, JSBI, Percent, Token, WETH } from '../sdk'
 import { injected } from '../connectors'
 
-export const ROUTER_ADDRESS = '0xE595e3344128BC092dFa1bF023Fc554b3187E404'
+export const ROUTER_ADDRESS = {
+  [ChainId.CARDONA]: '0xE595e3344128BC092dFa1bF023Fc554b3187E404',
+  [ChainId.APECHAIN]: '0x0A0e080923Bcc84B44A8026d5e8A716d70A1c0AE'
+}
 
 // a list of tokens by chain
 type ChainTokenList = {
@@ -16,7 +19,11 @@ export const BAGUETTECOIN = new Token(ChainId.CARDONA, '0x15d4e90c8549C10231EB68
 export const COPIA = new Token(ChainId.CARDONA, '0x4a40F699Edc135eBAaC85433ae055791ECf53A4b', 18, 'COPIA', 'COPIA')
 export const HYAPE = new Token(ChainId.CARDONA, '0xfef7051ac90f93E645fD5a97C49F965834f2A14B', 18, 'HYAPE', 'HyApeCoin')
 
+// Apechain
+export const APEUSD = new Token(ChainId.APECHAIN, '0xA2235d059F80e176D931Ef76b6C51953Eb3fBEf4', 18, 'ApeUSD', 'APE USD')
+export const APEETH = new Token(ChainId.APECHAIN, '0xcF800F4948D16F23333508191B1B1591daF70438', 18, 'ApeETH', 'APE ETH')
 
+// Random
 export const ARB = new Token(ChainId.CARDONA, '0x67385C066C14E3F5FA5Ca4C7755ae13883d09a18', 18, 'ARB', 'ARB')
 export const DAI = new Token(ChainId.CARDONA, '0x7422ab95742858e21b9F6299fF66B24FB2a478FD', 18, 'DAI', 'Dai Stablecoin')
 export const GRT = new Token(ChainId.CARDONA, '0xefb2408b7A3Db3594A2ad179d2C08A6Be1E1AE55', 18, 'GRT', 'GRT')
@@ -32,13 +39,15 @@ export const MNT = new Token(ChainId.CARDONA, '0xe0840f693e4fBf888448dAbe00a6d32
 export const SHIB = new Token(ChainId.CARDONA, '0x41Fb5b5BA5dc9d0D90c59Fa9123ae0A14eC5A553', 18, 'SHIB', 'SHIBA INU')
 
 const WETH_ONLY: ChainTokenList = {
-  [ChainId.CARDONA]: [WETH[ChainId.CARDONA]]
+  [ChainId.CARDONA]: [WETH[ChainId.CARDONA]],
+  [ChainId.APECHAIN]: [WETH[ChainId.APECHAIN]]
 }
 
 // used to construct intermediary pairs for trading
 export const BASES_TO_CHECK_TRADES_AGAINST: ChainTokenList = {
   ...WETH_ONLY,
-  [ChainId.CARDONA]: [...WETH_ONLY[ChainId.CARDONA], DAI, USDC, USDT, MKR]
+  [ChainId.CARDONA]: [...WETH_ONLY[ChainId.CARDONA], DAI, USDC, USDT, MKR],
+  [ChainId.APECHAIN]: [...WETH_ONLY[ChainId.APECHAIN]]
 }
 
 /**
@@ -71,13 +80,15 @@ export const SUGGESTED_BASES: ChainTokenList = {
     // GALA,
     // MNT,
     // SHIB
-  ]
+  ],
+  [ChainId.APECHAIN]: [APEUSD, APEETH]
 }
 
 // used to construct the list of all pairs we consider by default in the frontend
 export const BASES_TO_TRACK_LIQUIDITY_FOR: ChainTokenList = {
   ...WETH_ONLY,
-  [ChainId.CARDONA]: [...WETH_ONLY[ChainId.CARDONA], COPIA, ARKCOIN, TEMPCOIN, BAGUETTECOIN, HYAPE]
+  [ChainId.CARDONA]: [...WETH_ONLY[ChainId.CARDONA], COPIA, ARKCOIN, TEMPCOIN, BAGUETTECOIN, HYAPE],
+  [ChainId.APECHAIN]: [...WETH_ONLY[ChainId.APECHAIN], APEUSD, APEETH]
 }
 
 export const PINNED_PAIRS: { readonly [chainId in ChainId]?: [Token, Token][] } = {

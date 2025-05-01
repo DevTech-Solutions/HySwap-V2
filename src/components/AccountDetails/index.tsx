@@ -16,6 +16,7 @@ import { injected } from '../../connectors'
 import Identicon from '../Identicon'
 import { ExternalLink as LinkIcon } from 'react-feather'
 import { ExternalLink, LinkStyledButton, TYPE } from '../../theme'
+import { ChainId } from '../../sdk'
 
 const HeaderRow = styled.div`
   ${({ theme }) => theme.flexRowNoWrap};
@@ -261,7 +262,7 @@ export default function AccountDetails({
                     {chainId && account && (
                       <AddressLink href={getScanLink(chainId, account, 'address')}>
                         <LinkIcon size={16} />
-                        <span style={{ marginLeft: '4px' }}>View on Hychain Explorer</span>
+                        <span style={{ marginLeft: '4px' }}>View on {chainId === ChainId.CARDONA ? 'Hychain Explorer' : 'ApeScan'}</span>
                       </AddressLink>
                     )}
                   </div>

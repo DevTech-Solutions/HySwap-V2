@@ -176,7 +176,7 @@ export function useDerivedSwapInfo(): {
     currencyBalances[Field.INPUT],
     toggledVersion === slippageAdjustedAmounts ? slippageAdjustedAmounts[Field.INPUT] : null
   ]
-
+  
   if (balanceIn && amountIn && balanceIn.lessThan(amountIn)) {
     inputError = 'Insufficient ' + amountIn.currency.symbol + ' balance'
   }

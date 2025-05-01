@@ -120,7 +120,8 @@ const BalanceText = styled(Text)`
 `
 
 const NETWORK_LABELS: { [chainId in ChainId]: string | null } = {
-  [ChainId.CARDONA]: 'Hychain'
+  [ChainId.CARDONA]: 'Hychain',
+  [ChainId.APECHAIN]: 'Apechain'
 }
 
 export default function Header() {
@@ -153,7 +154,7 @@ export default function Header() {
             <AccountElement active={!!account} style={{ pointerEvents: 'auto' }}>
               {account && userEthBalance ? (
                 <BalanceText style={{ flexShrink: 0 }} pl="0.75rem" pr="0.5rem" fontWeight={500}>
-                  {userEthBalance?.toSignificant(4)} TOPIA
+                  {userEthBalance?.toSignificant(4)} {chainId === ChainId.CARDONA ? 'TOPIA' : 'APE'}
                 </BalanceText>
               ) : null}
               <Web3Status />

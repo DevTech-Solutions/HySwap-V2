@@ -1,19 +1,24 @@
 import { InjectedConnector } from '@web3-react/injected-connector'
-
 import { NetworkConnector } from './NetworkConnector'
+import { ChainId } from '../sdk'
 
-const NETWORK_URL = process.env.REACT_APP_NETWORK_URL
+const NETWORK_URLS: { [key in ChainId]: string } = {
+  [ChainId.CARDONA]: process.env.REACT_APP_NETWORK_URL ?? '',
+  [ChainId.APECHAIN]: process.env.REACT_APP_APECHAIN_URL ?? ''
+}
 
-export const NETWORK_CHAIN_ID: number = parseInt(process.env.REACT_APP_CHAIN_ID ?? '2911')
+// Default to CARDONA if not specified
+export const NETWORK_CHAIN_ID: ChainId = parseInt(process.env.REACT_APP_CHAIN_ID ?? ChainId.CARDONA.toString())
 
-if (typeof NETWORK_URL === 'undefined') {
-  throw new Error(`REACT_APP_NETWORK_URL must be a defined environment variable`)
+if (Object.values(NETWORK_URLS).some(url => !url)) {
+  throw new Error('Network URLs must be defined in environment')
 }
 
 export const network = new NetworkConnector({
-  urls: { [NETWORK_CHAIN_ID]: NETWORK_URL }
+  urls: NETWORK_URLS,
+  defaultChainId: NETWORK_CHAIN_ID
 })
 
 export const injected = new InjectedConnector({
-  supportedChainIds: [2911]
+  supportedChainIds: [ChainId.CARDONA, ChainId.APECHAIN]
 })

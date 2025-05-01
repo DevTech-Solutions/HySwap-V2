@@ -63,5 +63,12 @@ export const WETH = {
     18,
     'WTOPIA',
     'Wrapped TOPIA'
+  ),
+  [ChainId.APECHAIN]: new Token(
+    ChainId.APECHAIN,
+    '0x48b62137EdfA95a428D35C09E44256a739F6B557',
+    18,
+    'WAPE',
+    'Wrapped APE'
   )
 }

@@ -17,11 +17,12 @@ export function isAddress(value: any): string | false {
 }
 
 const SCAN_PREFIXES: { [chainId in ChainId]: string } = {
-  2911: 'explorer.hychain'
+  2911: 'explorer.hychain.com',
+  33139: 'apescan.io'
 }
 
 export function getScanLink(chainId: ChainId, data: string, type: 'transaction' | 'token' | 'address'): string {
-  const prefix = `https://${SCAN_PREFIXES[chainId] || ''}.com`
+  const prefix = `https://${SCAN_PREFIXES[chainId] || ''}`
 
   switch (type) {
     case 'transaction': {
@@ -86,8 +87,8 @@ export function getContract(address: string, ABI: any, library: Web3Provider, ac
 }
 
 // account is optional
-export function getRouterContract(_: number, library: Web3Provider, account?: string): Contract {
-  return getContract(ROUTER_ADDRESS, IUniswapV2Router02ABI, library, account)
+export function getRouterContract(chainId: ChainId, library: Web3Provider, account?: string): Contract {
+  return getContract(ROUTER_ADDRESS[chainId], IUniswapV2Router02ABI, library, account)
 }
 
 export function escapeRegExp(string: string): string {

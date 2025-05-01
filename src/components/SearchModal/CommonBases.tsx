@@ -40,7 +40,7 @@ export default function CommonBases({
     <AutoColumn gap="md">
       <AutoRow>
         <Text fontWeight={500} fontSize={14}>
-          Hychain Tokens
+          {chainId === ChainId.CARDONA ? 'Hychain Tokens' : 'Apechain Tokens'}
         </Text>
       </AutoRow>
       <AutoRow gap="4px">
@@ -54,7 +54,7 @@ export default function CommonBases({
         >
           <CurrencyLogo currency={ETHER} style={{ marginRight: 8 }} />
           <Text fontWeight={500} fontSize={16}>
-            TOPIA
+            {chainId === ChainId.CARDONA ? 'TOPIA' : 'APE'}
           </Text>
         </BaseWrapper>
         {(chainId ? SUGGESTED_BASES[chainId] : []).map((token: Token) => {

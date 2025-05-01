@@ -2,7 +2,7 @@ import { transparentize } from 'polished'
 import React, { useCallback, useMemo, useState } from 'react'
 import styled from 'styled-components'
 
-import { Token } from '../../sdk'
+import { ChainId, Token } from '../../sdk'
 import { useActiveWeb3React } from '../../hooks'
 import { useAllTokens } from '../../hooks/Tokens'
 import { ExternalLink, TYPE } from '../../theme'
@@ -75,7 +75,7 @@ function TokenWarningCard({ token }: TokenWarningCardProps) {
           </TYPE.main>
           {chainId && (
             <ExternalLink style={{ fontWeight: 400 }} href={getScanLink(chainId, token.address, 'token')}>
-              <TYPE.blue title={token.address}>{shortenAddress(token.address)} (View on Hychain Explorer)</TYPE.blue>
+              <TYPE.blue title={token.address}>{shortenAddress(token.address)} (View on {chainId === ChainId.CARDONA ? 'Hychain Explorer' : 'ApeScan'})</TYPE.blue>
             </ExternalLink>
           )}
         </AutoColumn>
