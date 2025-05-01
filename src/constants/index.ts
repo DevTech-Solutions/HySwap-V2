@@ -66,20 +66,6 @@ export const SUGGESTED_BASES: ChainTokenList = {
     BAGUETTECOIN,
     COPIA,
     HYAPE,
-    // APE,
-    // ARB,
-    // DAI,
-    // GRT,
-    // LINK,
-    // MKR,
-    // META,
-    // TRX,
-    // TUSD,
-    // USDC,
-    // USDT,
-    // GALA,
-    // MNT,
-    // SHIB
   ],
   [ChainId.APECHAIN]: [...WETH_ONLY[ChainId.APECHAIN], APEUSD, APEETH]
 }

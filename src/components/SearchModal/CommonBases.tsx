@@ -4,10 +4,13 @@ import styled from 'styled-components'
 
 import { ChainId, Currency, currencyEquals, ETHER, Token } from '../../sdk'
 import { SUGGESTED_BASES } from '../../constants'
+import { CHAIN_NAMES, NATIVE_TOKEN_SYMBOL } from '../../constants/chainSpecific'
 import { AutoColumn } from '../Column'
+import QuestionHelper from '../QuestionHelper/index'
 import { AutoRow } from '../Row'
 import CurrencyLogo from '../CurrencyLogo'
 import { useAddUserToken } from '../../state/user/hooks'
+import { useActiveWeb3React } from '../../hooks'
 
 const BaseWrapper = styled.div<{ disable?: boolean }>`
   border: 1px solid ${({ theme, disable }) => (disable ? 'transparent' : theme.bg3)};
@@ -35,13 +38,16 @@ export default function CommonBases({
   onSelect: (currency: Currency) => void
 }) {
   const addToken = useAddUserToken()
+  const { chainId: activeChainId } = useActiveWeb3React()
+  const currentChainId = chainId || activeChainId || ChainId.CARDONA
 
   return (
     <AutoColumn gap="md">
       <AutoRow>
         <Text fontWeight={500} fontSize={14}>
-          {chainId === ChainId.CARDONA ? 'Hychain Tokens' : 'Apechain Tokens'}
+          {CHAIN_NAMES[currentChainId]} Tokens
         </Text>
+        <QuestionHelper text="These tokens are commonly paired with other tokens." />
       </AutoRow>
       <AutoRow gap="4px">
         <BaseWrapper
@@ -54,7 +60,7 @@ export default function CommonBases({
         >
           <CurrencyLogo currency={ETHER} style={{ marginRight: 8 }} />
           <Text fontWeight={500} fontSize={16}>
-            {chainId === ChainId.CARDONA ? 'TOPIA' : 'APE'}
+            {NATIVE_TOKEN_SYMBOL[currentChainId]}
           </Text>
         </BaseWrapper>
         {(chainId ? SUGGESTED_BASES[chainId] : []).map((token: Token) => {

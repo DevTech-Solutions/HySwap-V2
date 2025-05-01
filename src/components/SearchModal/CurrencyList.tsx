@@ -15,6 +15,9 @@ import CurrencyLogo from '../CurrencyLogo'
 import Loader from '../Loader'
 import { FadedSpan, MenuItem } from './styleds'
 
+// Add import for the helper functions
+import { getNativeCurrencySymbol, isNativeCurrency } from '../../utils/getNativeCurrencySymbol'
+
 function currencyKey(currency: Currency): string {
   return currency instanceof Token ? currency.address : currency === ETHER ? 'ETHER' : ''
 }
@@ -51,6 +54,11 @@ function CurrencyRow({
   const removeToken = useRemoveUserAddedToken()
   const addToken = useAddUserToken()
 
+  // Get the correct display symbol
+  const displaySymbol = isNativeCurrency(currency) 
+    ? getNativeCurrencySymbol(chainId) 
+    : currency.symbol
+
   // only show add or remove buttons if not on selected list
   return (
     <MenuItem
@@ -63,7 +71,7 @@ function CurrencyRow({
       <CurrencyLogo currency={currency} size={'24px'} />
       <Column>
         <Text title={currency.name} fontWeight={500}>
-          {currency.symbol}
+          {displaySymbol}
         </Text>
         <FadedSpan>
           {!currencyEquals(currency, ETHER) && (

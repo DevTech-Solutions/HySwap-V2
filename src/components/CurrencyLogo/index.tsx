@@ -1,9 +1,10 @@
 import React, { useMemo } from 'react'
 import styled from 'styled-components'
-
-import { Currency, ETHER, Token } from '../../sdk'
+import { Currency, ETHER, Token, ChainId } from '../../sdk'
 import EthereumLogo from '../../assets/images/topia-logo.svg'
+import ApeLogo from '../../assets/images/apecoin-logo.svg'
 import Logo from '../Logo'
+import { useActiveWeb3React } from '../../hooks'
 
 const getTokenLogoURL = (address: string) => `images/suggested-tokens/${address}.png`
 
@@ -28,6 +29,8 @@ export default function CurrencyLogo({
   size?: string
   style?: React.CSSProperties
 }) {
+  const { chainId = ChainId.CARDONA } = useActiveWeb3React()
+  
   const srcs: string[] = useMemo(() => {
     if (currency === ETHER) return []
 
@@ -38,7 +41,12 @@ export default function CurrencyLogo({
   }, [currency])
 
   if (currency === ETHER) {
-    return <StyledEthereumLogo src={EthereumLogo} size={size} style={style} />
+    // Use chain-specific logo
+    return <StyledEthereumLogo 
+      src={chainId === ChainId.APECHAIN ? ApeLogo : EthereumLogo} 
+      size={size} 
+      style={style} 
+    />
   }
 
   return <StyledLogo size={size} srcs={srcs} alt={`${currency?.symbol ?? 'token'} logo`} style={style} />

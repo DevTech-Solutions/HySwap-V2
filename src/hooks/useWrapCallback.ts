@@ -1,11 +1,14 @@
 import { useMemo } from 'react'
 
-import { Currency, currencyEquals, ETHER, WETH, ChainId } from '../sdk'
+import { Currency, currencyEquals, ETHER, WETH } from '../sdk'
 import { tryParseAmount } from '../state/swap/hooks'
 import { useTransactionAdder } from '../state/transactions/hooks'
 import { useCurrencyBalance } from '../state/wallet/hooks'
 import { useActiveWeb3React } from './index'
 import { useWETHContract } from './useContract'
+
+// Add imports for chain-specific constants
+import { NATIVE_TOKEN_SYMBOL, WRAPPED_NATIVE_SYMBOL } from '../constants/chainSpecific'
 
 export enum WrapType {
   NOT_APPLICABLE,
@@ -45,13 +48,13 @@ export default function useWrapCallback(
             ? async () => {
                 try {
                   const txReceipt = await wethContract.deposit({ value: `0x${inputAmount.raw.toString(16)}` })
-                  addTransaction(txReceipt, { summary: `Wrap ${inputAmount.toSignificant(6)} ${chainId === ChainId.CARDONA ? 'TOPIA' : 'APE'} to ${chainId === ChainId.CARDONA ? 'WTOPIA' : 'WAPE'}` })
+                  addTransaction(txReceipt, { summary: `Wrap ${inputAmount.toSignificant(6)} ${NATIVE_TOKEN_SYMBOL[chainId]} to ${WRAPPED_NATIVE_SYMBOL[chainId]}` })
                 } catch (error) {
                   console.error('Could not deposit', error)
                 }
               }
             : undefined,
-        inputError: sufficientBalance ? undefined : `Insufficient ${chainId === ChainId.CARDONA ? 'TOPIA' : 'APE'} balance`
+        inputError: sufficientBalance ? undefined : `Insufficient ${NATIVE_TOKEN_SYMBOL[chainId]} balance`
       }
     } else if (currencyEquals(WETH[chainId], inputCurrency) && outputCurrency === ETHER) {
       return {
@@ -61,13 +64,13 @@ export default function useWrapCallback(
             ? async () => {
                 try {
                   const txReceipt = await wethContract.withdraw(`0x${inputAmount.raw.toString(16)}`)
-                  addTransaction(txReceipt, { summary: `Unwrap ${inputAmount.toSignificant(6)} ${chainId === ChainId.CARDONA ? 'TOPIA' : 'APE'} to ${chainId === ChainId.CARDONA ? 'WTOPIA' : 'WAPE'}` })
+                  addTransaction(txReceipt, { summary: `Unwrap ${inputAmount.toSignificant(6)} ${WRAPPED_NATIVE_SYMBOL[chainId]} to ${NATIVE_TOKEN_SYMBOL[chainId]}` })
                 } catch (error) {
                   console.error('Could not withdraw', error)
                 }
               }
             : undefined,
-        inputError: sufficientBalance ? undefined : `Insufficient ${chainId === ChainId.CARDONA ? 'WTOPIA' : 'WAPE'} balance`
+        inputError: sufficientBalance ? undefined : `Insufficient ${WRAPPED_NATIVE_SYMBOL[chainId]} balance`
       }
     } else {
       return NOT_APPLICABLE

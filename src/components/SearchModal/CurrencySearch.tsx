@@ -18,6 +18,9 @@ import { useTokenComparator } from './sorting'
 import { PaddedColumn, SearchInput, Separator } from './styleds'
 import AutoSizer from 'react-virtualized-auto-sizer'
 
+// Add import for helper functions
+import { getNativeCurrencySymbol } from '../../utils/getNativeCurrencySymbol'
+
 interface CurrencySearchProps {
   isOpen: boolean
   onDismiss: () => void
@@ -46,10 +49,16 @@ export function CurrencySearch({
   const isAddressSearch = isAddress(searchQuery)
   const searchToken = useToken(searchQuery)
 
+  // Check for the native currency symbol based on the current chain
+  const nativeCurrencySymbol = getNativeCurrencySymbol(chainId).toLowerCase()
+  
   const showETH: boolean = useMemo(() => {
     const s = searchQuery.toLowerCase().trim()
-    return s === '' || s === 'e' || s === 'et' || s === 'eth'
-  }, [searchQuery])
+    return s === '' || s === 'e' || s === 'et' || s === 'eth' || 
+           s === nativeCurrencySymbol.slice(0, 1) || 
+           s === nativeCurrencySymbol.slice(0, 2) || 
+           s === nativeCurrencySymbol
+  }, [searchQuery, nativeCurrencySymbol])
 
   const tokenComparator = useTokenComparator(invertSearchOrder)
 
@@ -101,7 +110,7 @@ export function CurrencySearch({
     (e: KeyboardEvent<HTMLInputElement>) => {
       if (e.key === 'Enter') {
         const s = searchQuery.toLowerCase().trim()
-        if (s === 'eth') {
+        if (s === 'eth' || s === nativeCurrencySymbol) {
           handleCurrencySelect(ETHER)
         } else if (filteredSortedTokens.length > 0) {
           if (
@@ -113,7 +122,7 @@ export function CurrencySearch({
         }
       }
     },
-    [filteredSortedTokens, handleCurrencySelect, searchQuery]
+    [filteredSortedTokens, handleCurrencySelect, searchQuery, nativeCurrencySymbol]
   )
 
   return (

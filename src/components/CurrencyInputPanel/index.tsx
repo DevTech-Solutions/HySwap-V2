@@ -12,6 +12,7 @@ import { TYPE } from '../../theme'
 import { Input as NumericalInput } from '../NumericalInput'
 import { ReactComponent as DropDown } from '../../assets/images/dropdown.svg'
 import { useActiveWeb3React } from '../../hooks'
+import { getNativeCurrencySymbol, isNativeCurrency } from '../../utils/getNativeCurrencySymbol'
 
 const InputRow = styled.div<{ selected: boolean }>`
   ${({ theme }) => theme.flexRowNoWrap}
@@ -147,13 +148,23 @@ export default function CurrencyInputPanel({
   showCommonBases
 }: CurrencyInputPanelProps) {
   const [modalOpen, setModalOpen] = useState(false)
-  const { account } = useActiveWeb3React()
+  const { account, chainId } = useActiveWeb3React()
   const selectedCurrencyBalance = useCurrencyBalance(account ?? undefined, currency ?? undefined)
   const theme = useContext(ThemeContext)
 
   const handleDismissSearch = useCallback(() => {
     setModalOpen(false)
   }, [setModalOpen])
+
+  const getDisplaySymbol = (currencyObj?: Currency | null): string => {
+    if (!currencyObj) return 'Select a token'
+    
+    if (isNativeCurrency(currencyObj)) {
+      return getNativeCurrencySymbol(chainId)
+    }
+    
+    return currencyObj.symbol || 'Unknown'
+  }
 
   return (
     <InputPanel id={id}>
@@ -220,7 +231,7 @@ export default function CurrencyInputPanel({
                     ? currency.symbol.slice(0, 4) +
                       '...' +
                       currency.symbol.slice(currency.symbol.length - 5, currency.symbol.length)
-                    : currency?.symbol) || 'Select a token'}
+                    : getDisplaySymbol(currency)) || 'Select a token'}
                 </StyledTokenName>
               )}
               {!disableCurrencySelect && <StyledDropDown selected={!!currency} />}
