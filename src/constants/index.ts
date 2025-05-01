@@ -81,7 +81,7 @@ export const SUGGESTED_BASES: ChainTokenList = {
     // MNT,
     // SHIB
   ],
-  [ChainId.APECHAIN]: [APEUSD, APEETH]
+  [ChainId.APECHAIN]: [...WETH_ONLY[ChainId.APECHAIN], APEUSD, APEETH]
 }
 
 // used to construct the list of all pairs we consider by default in the frontend
